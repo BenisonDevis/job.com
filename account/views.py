@@ -35,15 +35,16 @@ def admin_create(request):
         else:
             messages.error(request, "Username already exits ")
 
-    return render(request, "create_user.html")
+    return render(request, "accounts/create_user.html")
 
 
 def employee_create(request):
     if request.method == "POST":
         username = request.POST.get("username")
         fname = request.POST.get("firstname")
+        lname = request.POST.get("lastname")
         email = request.POST.get("email")
-        role = request.POST.get("role")
+        # role = request.POST.get("role")
         pasw1 = request.POST.get("password1")
         pasw2 = request.POST.get("password2")
 
@@ -53,7 +54,7 @@ def employee_create(request):
                 Employee.objects.create_user(
                     username=username,
                     first_name=fname,
-                    role=role,
+                    last_name=lname,
                     email=email,
                     password=pasw1,
                 )
@@ -64,7 +65,7 @@ def employee_create(request):
         else:
             messages.error(request, "Username already exits ")
 
-    return render(request, "create_user.html")
+    return render(request, "accounts/create_user.html")
 
 
 def company_create(request):
@@ -93,7 +94,7 @@ def company_create(request):
         else:
             messages.error(request, "Username already exits ")
 
-    return render(request, "create_user.html")
+    return render(request, "accounts/create_user.html")
 
 
 def user_login(request):
@@ -105,10 +106,10 @@ def user_login(request):
         if user:
             login(request, user)
             messages.success(request, "Login")
-            return redirect("user_home_page")
+            return redirect("employee_home")
         else:
             messages.error(request, "invalid username or password")
-    return render(request, "login_user.html")
+    return render(request, "accounts/login_user.html")
 
 
 def user_logout(request):

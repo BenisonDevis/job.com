@@ -52,7 +52,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="{% url 'employee_home' %}" class="nav-item nav-link active">Home</a>
                     <a href="about.html" class="nav-item nav-link">About</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
@@ -69,12 +69,28 @@
                             <a href="404.html" class="dropdown-item">404</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="{% url 'employee_profile' %}" class="nav-item nav-link" class="">Profile</a>
+                    
                 </div>
                 <!-- class="btn btn-primary rounded-0 py-4 px-lg-0 d-none d-lg-block" -->
-                <a href="" ><button class="button-1" >Login</button></i></a>
-                <a href="" ><button class="button-1" >Sigin Up</button></i></a>
-                <a href="" ><button class="button-22" role="button">Post A Job</button></a>
+                
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'user_logout' %}" ><button class="button-1" >Logout</button></i></a>
+                {% else %}
+                    <a href="{% url 'user_login' %}" ><button class="button-1" >Login</button></i></a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><button class="button-1" >Sigin Up</button></i></a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="{% url 'employee_create' %}" class="dropdown-item">Employee</a>
+                            <a href="{% url 'company_create' %}" class="dropdown-item">Company</a>
+                        </div>
+                    </div>
+                {% endif %}
+                    
+                
+                
+                <!-- <a href="" ><button class="button-1" >Sigin Up</button></i></a> -->
+                <!-- <a href="" ><button class="button-22" role="button">Post A Job</button></a> -->
             </div>
         </nav>
         <!-- Navbar End -->
