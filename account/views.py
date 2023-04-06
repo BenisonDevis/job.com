@@ -106,7 +106,7 @@ def user_login(request):
         if user:
             login(request, user)
             messages.success(request, "Login")
-            return redirect("employee_home")
+            return redirect("employee_home", )
         else:
             messages.error(request, "invalid username or password")
     return render(request, "accounts/login_user.html")
