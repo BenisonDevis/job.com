@@ -67,8 +67,11 @@
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     
-                    {% for post in post %}
+                    
                         
+                    
+                    {% for post in post %}
+                    {{post.rel_comp_comp}} 
                     
                         
                     <div style="box-shadow: 0px 0px 10px darkblue;" class="job-item p-4 mb-4">
@@ -76,10 +79,10 @@
         
                         <div class="row g-4">
                             <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                <img class="flex-shrink-0 img-fluid border rounded" src="{{ edit_pro.company_logo.url }}" alt="" style="width: 80px; height: 80px;">
+                                <img class="flex-shrink-0 img-fluid border rounded" src="{{post.rel_comp_comp.company_logo.url}}" alt="" style="width: 80px; height: 80px;">
                                 <div class="text-start ps-4">
                                     <h5 class="mb-3">{{ post.jobtitle }}</h5>
-                                    <h6>{{ post.rel_comp_job.company_name }} hai</h6>
+                                    <h6>{{post.rel_comp_comp}}</h6>
                                     <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ post.location }}</span>
                                     <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{ post.jobtype }}</span>
                                     <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>₹{{ post.price_range }}</span>
@@ -94,7 +97,7 @@
                                 <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>{{ post.posttime }}</small>
                             </div>
                             <p style="text-align: left;">{{ post.short_discription }}</p>
-                            <a href=""><button>Details</button></a>
+                            <a href="{% url 'details_job' post.id %}"><button>Details</button></a>
                         </div>
                         
                             

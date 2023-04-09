@@ -22,8 +22,8 @@ class CompanyProfile(models.Model):
     
 class JobPost(models.Model):
     type = (
-        ('F','Full Time'),
-        ('P','Part Time')
+        ('Full Time','Full Time'),
+        ('Part Time','Part Time')
     )
     jobtitle = models.CharField(max_length=50)
     location = models.CharField(max_length=50)
@@ -38,3 +38,4 @@ class JobPost(models.Model):
     education = models.TextField()
     status = models.BooleanField(default=True)
     rel_comp_job = models.ForeignKey(Company,on_delete=models.CASCADE,null=True,blank=True)
+    rel_comp_comp = models.ForeignKey(CompanyProfile,on_delete=models.CASCADE,null=True,blank=True)

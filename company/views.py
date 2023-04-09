@@ -6,19 +6,22 @@ from account.models import Company
 
 def company_home(request):
     comp = request.user
+    
     edit_pro = CompanyProfile.objects.filter(
-        rel_comp = comp
+        rel_comp = comp,
     )
     post = JobPost.objects.filter(
         rel_comp_job = comp
+        
     )
     
     context = {
         'comp' : comp,
         'edit_pro' : edit_pro,
-        'post' : post
+        'post' : post,
+        
     }
-    
+   
     return render(request,'company/company_home.html',context)
 
 
@@ -66,6 +69,9 @@ def company_profile_edit(request):
 
 def post_job(request):
     user = request.user
+    comp = CompanyProfile.objects.filter(
+        rel_comp = user
+    ).first()
     if request.method == 'POST':
         jobtitle = request.POST.get('jobtitle')
         location = request.POST.get('location')
@@ -91,7 +97,8 @@ def post_job(request):
                 required = required,
                 education = education,
                 status = True,
-                rel_comp_job = user
+                rel_comp_job = user,
+                rel_comp_comp =comp
             )
             print('hello')
             return redirect('company_home')
@@ -108,7 +115,8 @@ def post_job(request):
                 required = required,
                 education = education,
                 status = False,
-                rel_comp_job = user
+                rel_comp_job = user,
+                rel_comp_comp =comp
             )
             print('hai')
             return redirect('company_home')
@@ -116,6 +124,10 @@ def post_job(request):
     return render(request,'company/job_post.html')
 
 
-def details_job(request):
-    return render(request,'company/job-detail.html')
+def details_job(request,id):
+    post = JobPost.objects.get(id=id)
+    context ={
+        'post' : post
+    }
+    return render(request,'company/job-detail.html',context)
     

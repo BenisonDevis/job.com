@@ -15,6 +15,14 @@ def employee_home(request,):
     return render(request, "employees_pages/emp_home.html",context)
 
 
+def job_details(request,id):
+    post = JobPost.objects.get(id=id)
+    context ={
+        'post' : post
+    }
+    return render(request,'employees_pages/job_details.html',context)
+
+
 def employee_profile(request):
     emp = request.user
     
