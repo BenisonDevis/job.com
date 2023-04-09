@@ -1,13 +1,18 @@
 from django.shortcuts import render,redirect
 from .models import *
 from account.models import Employee
+from company.models import  JobPost
 
 
 # Create your views here.
 
 
 def employee_home(request,):
-    return render(request, "employees_pages/emp_home.html")
+    post = JobPost.objects.all()
+    context = {
+        'post' : post
+    }
+    return render(request, "employees_pages/emp_home.html",context)
 
 
 def employee_profile(request):
@@ -25,7 +30,10 @@ def employee_profile(request):
     addpro = AddProject.objects.filter(
         rel_project = emp
     )
-    
+    addprof = ProfileEdit.objects.filter(
+        rel_profile = emp
+    ).first()
+   
 
     context={
         'emp' : emp,
@@ -33,14 +41,14 @@ def employee_profile(request):
         'educ' : addeduc,
         'pro' : addpro,
         'skl' : addskl,
-    
+        'prof' : addprof
     }
     return render(request, "employees_pages/emp_profile.html",context)
 
 
 
 def employee_profile_edit(request):
-    
+    emp = request.user
     if request.method == 'POST':
         prof_titl=request.POST.get('prof_titl')
         bio=request.POST.get('bio')
@@ -60,6 +68,7 @@ def employee_profile_edit(request):
             mobile_no = mob,
             working_sts = status,
             gender = gender,
+            rel_profile = emp
         )
         return redirect('employee_profile')
     return render(request, "employees_pages/emp_edit_profile.html")

@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
+
 {% load static %}
 
 <style>
@@ -72,52 +74,45 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <label for="inputUsername">Profile title</label>
-                                        <input type="text" class="form-control" id="inputUsername" name="prof_titl">
+                                        <label for="company_name">Company Name :</label>
+                                        <input type="text" class="form-control" id="company_name" name="company_name">
                                     </div>
                                         <div class="form-group">
-                                            <label for="inputUsername">Biography</label>
-                                            <textarea name="bio" rows="2" class="form-control" id="inputBio" placeholder="Tell something about yourself"></textarea>
+                                            <label for="slogan">Company Slogan :</label>
+                                            <input name="slogan" type="text" class="form-control" id="slogan">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                     
-                                        <label for="">Upload profile image</label>
-                                        <input accept="image/*" type="file" name="pro_img" id="">
+                                        <label for="">Upload Company Logo :</label>
+                                        <input accept="image/*" type="file" name="company_logo" id="">
                                         <br>
-                                        <label for="">Upload your CV</label>
-                                        <input type="file" name="pro_cv" id="">
+                                        <label for="">Upload Cover image :</label>
+                                        <input type="file" name="cover_image" id="">
                                         
+                                    </div>
+                                   
+                                    
+                                    <div class="form-group col-md-6">
+                                        <h5>About as</h5>
+                                        <label for="">Discriptions :</label>
+                                        <textarea name="about_disc" rows="2" class="form-control" id="about_disc" placeholder=""></textarea>
+                                        <label for="">Upload image :</label>
+                                        <input type="file" name="about_img" id="">
+                                    </div>
+                                    
+                                    <div class="form-group col-md-6">
+                                        <h5>Outher details</h5>
+                                        <label for="">Title  :</label>
+                                        <input name="outh_title" type="text" class="form-control" id="outh_title">
+                                        <label for="">Discriptions :</label>
+                                        <textarea name="outh_disc" rows="2" class="form-control" id="inputBio" placeholder="Tell something about yourself"></textarea>
+                                        <label for="">Upload image :</label>
+                                        <input type="file" name="outh_img" id="">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="">Location :</label>
-                                        <input name="location" type="text" class="form-control" id="inputFirstName">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="">Mobile number :</label>
-                                        <input name="mob" type="text" class="form-control" id="inputLastName">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="">Working Status</label><br>
-                                        
-                                        <input value="I'm Fresher" name="status" type="radio">
-                                        <label for="">I'm Fresher</label>
-                                        <br>
-                                        <input value="I'm Experienced" name="status" type="radio">
-                                        <label for="">I'm Experienced</label>
-
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputFirstName">Gender</label><br>
-                                        
-                                        <input value="Male" name="gender" type="radio" >
-                                        <label for="inputFirstName">Male</label>
-                                        <br>
-                                        <input value="Female" name="gender" type="radio" >
-                                        <label for="inputFirstName">Female</label>
-                                        <br>
-                                        <input value="Other" name="gender" type="radio">
-                                        <label for="inputFirstName">Other</label>
+                                        <input name="location" type="text" class="form-control" id="">
                                     </div>
                                     <button>Save</button>
                                 </div>
@@ -135,5 +130,6 @@
     </div>
 
 </div>
-
+    
 {% endblock content %}
+    

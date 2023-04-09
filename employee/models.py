@@ -52,3 +52,4 @@ class ProfileEdit(models.Model):
     mobile_no = models.CharField(max_length=12)
     working_sts = models.CharField(max_length=50,choices=worksts)
     gender = models.CharField(max_length=50,choices=gender)
+    rel_profile = models.OneToOneField(Employee,on_delete=models.CASCADE,null=True,blank=True)

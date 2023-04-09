@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<style>
+    body{
+        color: black;
+    }
+    .card {
+        margin-bottom: 1.5rem;
+        box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
+    }
+    .card {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid #e5e9f2;
+        border-radius: .2rem;
+    }
+    .card-header:first-child {
+        border-radius: calc(.2rem - 1px) calc(.2rem - 1px) 0 0;
+    }
+    .card-header {
+        border-bottom-width: 1px;
+    }
+    .card-header {
+        padding: .75rem 1.25rem;
+        margin-bottom: 0;
+        color: inherit;
+        background-color: #fff;
+        border-bottom: 1px solid #e5e9f2;
+    }
+    input{
+        margin-bottom: 20px;
+    }
+    textarea{
+        margin-bottom: 20px;
+    }
+</style>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container ">
+    <h1 class="h3 mb-3">Settings</h1>
+    <div class="row">
+        <div class="col-md-12 col-xl-11">
+
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Job Post</h5>
+                </div>
+            </div>
+              
+
+            <div class="col-md-15 col-xl-16">
+                <div class="tab-content">
+
+
+                    <div class="card">
+
+
+                        <div class="card-body">
+                            <form method="post" >
+                                {% csrf_token %}
+                                <div class="row">
+
+                                    <div class="form-group col-md-6">
+                                        <label for="">Job Title :</label>
+                                        <input name="jobtitle" type="text" class="form-control" id="jobtitle">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="">Location :</label>
+                                        <input name="location" type="text" class="form-control" id="location">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="">Last Date :</label>
+                                        <input name="lastdate" type="date" class="form-control" id="lastdate">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="">Job Type :</label>
+                                        <input name="jobtype" type="radio" id="jobtype" value="Full Time">
+                                        <label for="">Full Time :</label>
+                                        <input name="jobtype" type="radio"  id="jobtype" value="Part Time" >
+                                        <label for="">Part Time :</label>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="">Vacancy :</label>
+                                        <input name="vacancy" type="number" class="form-control" id="vacancy">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="">Price Range :</label>
+                                        <input name="price" type="text" class="form-control" id="price" placeholder="price-price">
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label for="">Job Discription :</label>
+                                        <textarea name="job_discription" id="" cols="90" rows="3"></textarea>
+                                    </div>
+                                    <br>
+                                    <div class="form-group col-md-8">
+                                        <label for="">Job Short Discription :</label>
+                                        <textarea name="short_discription" id="" cols="90" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label for="">Job Required :</label>
+                                        <textarea name="required" id="" cols="90" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label for="">Minimum Qualification and Expirience :</label>
+                                        <textarea name="education" id="" cols="90" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="">Status :</label>
+                                        <input name="status" type="checkbox"  id="status">
+                                    </div>
+                                    
+                                </div>
+                                <button>Save</button>
+
+                            </form>
+                        </div>
+
+
+
+
+                 
+                    </div>
+            
+                </div>   
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}
