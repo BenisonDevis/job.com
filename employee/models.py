@@ -1,5 +1,6 @@
 from django.db import models
 from account.models import Employee
+from company.models import JobPost
 
 # Create your models here.
 
@@ -53,3 +54,17 @@ class ProfileEdit(models.Model):
     working_sts = models.CharField(max_length=50,choices=worksts)
     gender = models.CharField(max_length=50,choices=gender)
     rel_profile = models.OneToOneField(Employee,on_delete=models.CASCADE,null=True,blank=True)
+    
+    
+class ApplyJob(models.Model):
+    sel =(
+        ('Waiting for Review','Waiting for Review'),
+        ('Your Selected','Your Selected'),
+        ('Rejected','Rejected'),
+    )
+    apply_status = models.BooleanField(default=True)
+    rel_profile = models.ForeignKey(Employee,on_delete=models.CASCADE,null=True,blank=True)
+
+    rel_post = models.ForeignKey(JobPost,on_delete=models.CASCADE,null=True,blank=True)
+    rel_empl_post = models.ForeignKey(ProfileEdit,on_delete=models.CASCADE,null=True,blank=True)
+    selected = models.CharField(max_length=30,choices=sel,default='Waiting for Review')

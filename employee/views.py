@@ -9,6 +9,7 @@ from company.models import  JobPost
 
 def employee_home(request,):
     post = JobPost.objects.all()
+    
     context = {
         'post' : post
     }
@@ -17,11 +18,52 @@ def employee_home(request,):
 
 def job_details(request,id):
     post = JobPost.objects.get(id=id)
+    user = request.user
+    prof = ProfileEdit.objects.filter(
+        rel_profile = user
+    ).first()
+    if request.method == 'POST':
+        apl=request.POST.get('apply')
+        
+        if apl:
+            ApplyJob.objects.create(
+                apply_status = True,
+                rel_profile = user,
+                rel_post = post,
+                rel_empl_post = prof
+            )
+            
+            return redirect('job_details',post.id)
+        else:
+            ApplyJob.objects.create(
+                apply_status = False,
+                rel_profile = request.user,
+                rel_post = post,
+                rel_empl_post = prof
+            )
+            
+            return redirect('job_details',post.id)
+            
+    apl = ApplyJob.objects.filter(
+        rel_post = post
+    ).values_list('rel_profile',flat=True)
+    print(apl)
     context ={
-        'post' : post
+        'post' : post,
+        'apl' : apl
     }
     return render(request,'employees_pages/job_details.html',context)
 
+def apply_sts(request,id):
+    post = JobPost.objects.get(id=id)
+    apl = ApplyJob.objects.filter(
+        rel_post = post
+    ).first()
+    apl.apply_status = not apl.apply_status
+    apl.save()
+    
+    return redirect('job_details',post.id)
+    
 
 def employee_profile(request):
     emp = request.user
@@ -149,6 +191,20 @@ def add_skill(request):
         return redirect('employee_profile',)
         
     return render(request, "employees_pages/emp_profile.html")
+
+
+def employee_appliedjob(request):
+    user =request.user
+    apl = ApplyJob.objects.filter(
+        rel_profile = user
+    )
+    
+    context = {
+        'apl' : apl
+    }
+     
+    return render(request, "employees_pages/applied_jobs.html",context)
+
 
 
 

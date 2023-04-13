@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import CompanyProfile,JobPost
-from account.models import Company
-
+from account.models import Company,Employee
+from employee.models import ApplyJob
 # Create your views here.
 
 def company_home(request):
@@ -124,10 +124,40 @@ def post_job(request):
     return render(request,'company/job_post.html')
 
 
+def job_status(request,id):
+    post = JobPost.objects.get(id=id)
+    post.status = not post.status
+    post.save()
+    return redirect('details_job',post.id)
+
 def details_job(request,id):
     post = JobPost.objects.get(id=id)
+    apl = ApplyJob.objects.filter(
+        rel_post = post
+    )
     context ={
-        'post' : post
+        'post' : post,
+        'apl' : apl,
+        
     }
     return render(request,'company/job-detail.html',context)
+
+def applied_employee_profile(request,id):
+    apl = ApplyJob.objects.get(id=id)
+    if request.method == 'POST':
+            sel = request.POST.get('select')
+            apl.selected = sel
+            apl.save()
+            
+            return redirect('applied_employee_profile',apl.id)
+    context = {
+        'apl' : apl,
+        'exp': apl.rel_profile.addexperience_set.all(),
+        'skl' : apl.rel_profile.addskill_set.all(),
+        'edu' : apl.rel_profile.addeducations_set.all(),
+        'pro' : apl.rel_profile.addproject_set.all(),
+        # 'profile' : apl.rel_profile.profileedit.all(),
+    }
     
+    print('profile')
+    return render(request,'company/applied_user_profile.html',context)

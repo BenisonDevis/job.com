@@ -82,60 +82,60 @@
     <div class="container">
         <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore By Category</h1>
         <div class="row g-4">
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <a class="cat-item rounded p-4" href="">
-                    <i class="fa fa-3x fa-mail-bulk text-primary mb-4"></i>
+            <div  class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                <a style="box-shadow: 2px 2px 10px crimson;" class="cat-item rounded p-4" href="">
+                    <i style="color: crimson;" class="fa fa-3x fa-mail-bulk  mb-4"></i>
                     <h6 class="mb-3">Marketing</h6>
-                    <p class="mb-0">123 Vacancy</p>
+                    
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <a class="cat-item rounded p-4" href="">
-                    <i class="fa fa-3x fa-headset text-primary mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;" class="cat-item rounded p-4" href="">
+                    <i style="color: crimson;" class="fa fa-3x fa-headset  mb-4"></i>
                     <h6 class="mb-3">Customer Service</h6>
-                    <p class="mb-0">123 Vacancy</p>
+                    
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <a class="cat-item rounded p-4" href="">
-                    <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;" class="cat-item rounded p-4" href="">
+                    <i style="color: crimson;" class="fa fa-3x fa-user-tie  mb-4"></i>
                     <h6 class="mb-3">Human Resource</h6>
-                    <p class="mb-0">123 Vacancy</p>
+                    
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <a class="cat-item rounded p-4" href="">
-                    <i class="fa fa-3x fa-tasks text-primary mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;" class="cat-item rounded p-4" href="">
+                    <i style="color: crimson;" class="fa fa-3x fa-tasks  mb-4"></i>
                     <h6 class="mb-3">Project Management</h6>
-                    <p class="mb-0">123 Vacancy</p>
+                    
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <a class="cat-item rounded p-4" href="">
-                    <i class="fa fa-3x fa-chart-line text-primary mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;" class="cat-item rounded p-4" href="">
+                    <i style="color: crimson;"class="fa fa-3x fa-chart-line  mb-4"></i>
                     <h6 class="mb-3">Business Development</h6>
-                    <p class="mb-0">123 Vacancy</p>
+                    
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <a class="cat-item rounded p-4" href="">
-                    <i class="fa fa-3x fa-hands-helping text-primary mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;" class="cat-item rounded p-4" href="">
+                    <i style="color: crimson;" class="fa fa-3x fa-hands-helping  mb-4"></i>
                     <h6 class="mb-3">Sales & Communication</h6>
-                    <p class="mb-0">123 Vacancy</p>
+                    
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <a class="cat-item rounded p-4" href="">
-                    <i class="fa fa-3x fa-book-reader text-primary mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;" class="cat-item rounded p-4" href="">
+                    <i style="color: crimson;" class="fa fa-3x fa-book-reader  mb-4"></i>
                     <h6 class="mb-3">Teaching & Education</h6>
-                    <p class="mb-0">123 Vacancy</p>
+                    
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <a class="cat-item rounded p-4" href="">
-                    <i class="fa fa-3x fa-drafting-compass text-primary mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;" class="cat-item rounded p-4" href="">
+                    <i style="color: crimson;" class="fa fa-3x fa-drafting-compass  mb-4"></i>
                     <h6 class="mb-3">Design & Creative</h6>
-                    <p class="mb-0">123 Vacancy</p>
+                    
                 </a>
             </div>
         </div>
@@ -168,37 +168,42 @@
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     
+                    
                     {% for post in post %}
+                    
+                    {% if post.status %}
 
-                    <div style="box-shadow: 0px 0px 10px darkblue;" class="job-item p-4 mb-4">
-                        
-        
-                        <div class="row g-4">
-                            <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                <img class="flex-shrink-0 img-fluid border rounded" src="{{post.rel_comp_comp.company_logo.url}}" alt="" style="width: 80px; height: 80px;">
-                                <div class="text-start ps-4">
-                                    <h5 class="mb-3">{{ post.jobtitle }}</h5>
-                                    <h6>{{post.rel_comp_comp}}</h6>
-                                    <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ post.location }}</span>
-                                    <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{ post.jobtype }}</span>
-                                    <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>₹{{ post.price_range }}</span>
+                        <div style="box-shadow: 0px 0px 10px darkblue;" class="job-item p-4 mb-4">
+                            
+            
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded" src="{{post.rel_comp_comp.company_logo.url}}" alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">{{ post.jobtitle }}</h5>
+                                        <h6>{{post.rel_comp_comp}}</h6>
+                                        <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ post.location }}</span>
+                                        <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{ post.jobtype }}</span>
+                                        <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>₹{{ post.price_range }}</span>
+                                    </div>
                                 </div>
+                                
+                                <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        
+                                        <a style="box-shadow: 0px 0px 5px darkred;" class="btn btn-info" href="{% url 'job_details' post.id %}">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>{{ post.posttime }}</small>
+                                </div>
+                                <p style="text-align: left;">{{ post.short_discription }}</p>
+                                
                             </div>
                             
-                            <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                <div class="d-flex mb-3">
-                                    <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
-                                    <a class="btn btn-primary" href="">Apply Now</a>
-                                </div>
-                                <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>{{ post.posttime }}</small>
-                            </div>
-                            <p style="text-align: left;">{{ post.short_discription }}</p>
-                            <a href="{% url 'job_details' post.id %}"><button>Details</button></a>
+                                
                         </div>
-                        
-                            
-                    </div>
-                        
+                    
+                    {% endif %}
+    
                     {% endfor %}
 
                     <a class="btn btn-primary py-3 px-5" href="">Browse More Jobs</a>

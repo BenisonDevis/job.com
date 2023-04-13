@@ -7,5 +7,6 @@ urlpatterns = [
     path('company/profile/edit/',company_profile_edit,name="company_profile_edit"),
     path('company/post/job/',post_job,name="post_job"),
     path('company/job/<int:id>/details/',details_job,name="details_job"),
-
+    path('company/job/<int:id>/status/',job_status,name="job_status"),
+    path('company/applied/<int:id>/user/',applied_employee_profile,name="applied_employee_profile"),
 ]

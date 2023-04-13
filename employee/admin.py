@@ -8,3 +8,6 @@ admin.site.register(AddEducations)
 admin.site.register(AddProject)
 admin.site.register(AddSkill)
 admin.site.register(ProfileEdit)
+admin.site.register(ApplyJob)
+
+
