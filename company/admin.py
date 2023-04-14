@@ -5,5 +5,3 @@ from .models import *
 
 admin.site.register(CompanyProfile)
 admin.site.register(JobPost)
-
-

@@ -69,7 +69,6 @@ def employee_create(request):
 
 
 def company_create(request):
-
     if request.method == "POST":
         username = request.POST.get("username")
         fname = request.POST.get("firstname")
@@ -104,18 +103,18 @@ def user_login(request):
         password = request.POST.get("password")
 
         user = authenticate(username=username, password=password)
-       
+
         if user:
             login(request, user)
             messages.success(request, "Login")
-            if request.user.role == 'USER':
+            if request.user.role == "USER":
                 return redirect("employee_home")
-            elif request.user.role == 'COMPANY':
+            elif request.user.role == "COMPANY":
                 return redirect("company_home")
-        
+
         else:
             messages.error(request, "invalid username or password")
-    
+
     return render(request, "accounts/login_user.html")
 
 
