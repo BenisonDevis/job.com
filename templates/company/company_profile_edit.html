@@ -75,11 +75,11 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="company_name">Company Name :</label>
-                                        <input type="text" class="form-control" id="company_name" name="company_name">
+                                        <input value="{{ profile.company_name }}" type="text" class="form-control" id="company_name" name="company_name">
                                     </div>
                                         <div class="form-group">
                                             <label for="slogan">Company Slogan :</label>
-                                            <input name="slogan" type="text" class="form-control" id="slogan">
+                                            <input value="{{ profile.company_slogam }}" name="slogan" type="text" class="form-control" id="slogan">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -96,7 +96,7 @@
                                     <div class="form-group col-md-6">
                                         <h5>About as</h5>
                                         <label for="">Discriptions :</label>
-                                        <textarea name="about_disc" rows="2" class="form-control" id="about_disc" placeholder=""></textarea>
+                                        <textarea name="about_disc" rows="2" class="form-control" id="about_disc" placeholder="">{{ profile.about_us_discpt }}</textarea>
                                         <label for="">Upload image :</label>
                                         <input type="file" name="about_img" id="">
                                     </div>
@@ -104,15 +104,15 @@
                                     <div class="form-group col-md-6">
                                         <h5>Outher details</h5>
                                         <label for="">Title  :</label>
-                                        <input name="outh_title" type="text" class="form-control" id="outh_title">
+                                        <input value="{{ profile.outher_det_title }}" name="outh_title" type="text" class="form-control" id="outh_title">
                                         <label for="">Discriptions :</label>
-                                        <textarea name="outh_disc" rows="2" class="form-control" id="inputBio" placeholder="Tell something about yourself"></textarea>
+                                        <textarea name="outh_disc" rows="2" class="form-control" id="inputBio" placeholder="Tell something about yourself">{{ profile.outher_det_discription }}</textarea>
                                         <label for="">Upload image :</label>
                                         <input type="file" name="outh_img" id="">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="">Location :</label>
-                                        <input name="location" type="text" class="form-control" id="">
+                                        <input value="{{ profile.company_location }}" name="location" type="text" class="form-control" id="">
                                     </div>
                                     <button>Save</button>
                                 </div>

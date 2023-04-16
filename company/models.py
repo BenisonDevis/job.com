@@ -5,16 +5,16 @@ from account.models import Company
 
 
 class CompanyProfile(models.Model):
-    company_name = models.CharField(max_length=50)
+    company_name = models.CharField(max_length=50,null=True, blank=True)
     company_logo = models.ImageField(upload_to="company/", null=True, blank=True)
     company_prf_bg = models.ImageField(upload_to="company/", null=True, blank=True)
-    company_slogam = models.CharField(max_length=50)
-    company_location = models.CharField(max_length=50)
+    company_slogam = models.CharField(max_length=50,null=True, blank=True)
+    company_location = models.CharField(max_length=50,null=True, blank=True)
     about_us_img = models.ImageField(upload_to="company/", null=True, blank=True)
-    about_us_discpt = models.TextField()
-    outher_det_title = models.CharField(max_length=50)
+    about_us_discpt = models.TextField(null=True, blank=True)
+    outher_det_title = models.CharField(max_length=50,null=True, blank=True)
     outher_det_image = models.ImageField(upload_to="company/", null=True, blank=True)
-    outher_det_discription = models.TextField()
+    outher_det_discription = models.TextField(null=True, blank=True)
     rel_comp = models.OneToOneField(
         Company, on_delete=models.CASCADE, null=True, blank=True
     )

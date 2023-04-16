@@ -29,9 +29,9 @@
         <!-- Template Stylesheet -->
         <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
-<body>
+<body >
 
-    <div class="container-xxl bg-white p-0">
+    <div style="background-color: rgb(232, 228, 235) ;" class="container-xxl  p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -43,25 +43,41 @@
 
         <!-- Navbar Start -->
         <nav style="background-color: rgb(4, 44, 68);" class="navbar navbar-expand-lg  navbar-light shadow sticky-top p-0">
-            <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                <!-- <h1 class="m-0 text-primary">JobEntry</h1> -->
-                <img style="width: 300px;" src="{% static 'img/newlog.png' %}" alt="">
-            </a>
+            {% if request.user.role == 'USER'  %}
+                <a href="{% url 'employee_home' %}" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+                    <!-- <h1 class="m-0 text-primary">JobEntry</h1> -->
+                    <img style="width: 300px;" src="{% static 'img/newlog.png' %}" alt="">
+                </a>
+            {% elif request.user.role == 'COMPANY' %}
+                <a href="{% url 'company_home' %}" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+                    <!-- <h1 class="m-0 text-primary">JobEntry</h1> -->
+                    <img style="width: 300px;" src="{% static 'img/newlog.png' %}" alt="">
+                </a>
+            {% else %}
+                <a href="#" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+                    <!-- <h1 class="m-0 text-primary">JobEntry</h1> -->
+                    <img style="width: 300px;" src="{% static 'img/newlog.png' %}" alt="">
+                </a>
+            {% endif %}
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    
-                    {% if request.user.role == 'USER'  %}
-                        <a href="{% url 'employee_home' %}" class="nav-item nav-link active">Home</a>
-                    {% else %}
-                        <a href="{% url 'company_home' %}" class="nav-item nav-link active">Home</a>
-
-                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.role == 'USER' %}
+                            <a href="{% url 'employee_home' %}" class="nav-item nav-link active">Home</a>
+                            <a href="{% url 'employee_appliedjob' %}" class="nav-item nav-link">Applied Jobs</a>
+                            <a href="{% url 'employee_profile' %}" class="nav-item nav-link" class="">Profile</a>
+                        {% elif request.user.role == 'COMPANY' %}
+                            <a href="{% url 'company_home' %}" class="nav-item nav-link active">Home</a>
+                            <a href="{% url 'post_job' %}" class="nav-item nav-link">Post Job</a>
+                            <a href="{% url 'company_profile' %}" class="nav-item nav-link" class="">Profile</a>
+                        {% endif %}
                         
-                    <a href="{% url 'employee_appliedjob' %}" class="nav-item nav-link">Applied Jobs</a>
-                    <div class="nav-item dropdown">
+                    {% endif %}
+
+                    <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="job-list.html" class="dropdown-item">Job List</a>
@@ -75,20 +91,10 @@
                             <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             <a href="404.html" class="dropdown-item">404</a>
                         </div>
-                    </div>
-                    
-                    {% if request.user.role == 'USER' %}
-                        <a href="{% url 'employee_profile' %}" class="nav-item nav-link" class="">Profile</a>
-                    {% else  %}
-                        <a href="{% url 'company_profile' %}" class="nav-item nav-link" class="">Profile</a>
-
-                    {% endif %}
-                        
-                    
+                    </div> -->
                     
                 </div>
                 <!-- class="btn btn-primary rounded-0 py-4 px-lg-0 d-none d-lg-block" -->
-                
                 {% if request.user.is_authenticated %}
                     <a href="{% url 'user_logout' %}" ><button class="button-1" >Logout</button></i></a>
                 {% else %}
@@ -101,9 +107,7 @@
                         </div>
                     </div>
                 {% endif %}
-                    
-                
-                
+
                 <!-- <a href="" ><button class="button-1" >Sigin Up</button></i></a> -->
                 <!-- <a href="" ><button class="button-22" role="button">Post A Job</button></a> -->
             </div>
@@ -112,9 +116,9 @@
 
 
 
-    {% block content %}
+        {% block content %}
 
-    {% endblock content %}
+        {% endblock content %}
 
             <!-- Footer Start -->
             <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -162,10 +166,10 @@
                     <div class="copyright">
                         <div class="row">
                             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                                &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
+                                &copy; <a class="border-bottom" href="#">Job.com</a>, All Right Reserved. 
                                 
                                 <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                                Designed By <a class="border-bottom" href="https://htmlcodex.com">BENISON DEVIS</a>
                             </div>
                             <div class="col-md-6 text-center text-md-end">
                                 <div class="footer-menu">

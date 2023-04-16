@@ -47,14 +47,14 @@ class ProfileEdit(models.Model):
 
     gender = (("M", "Male"), ("F", "Female"), ("O", "Outher"))
 
-    profile_title = models.CharField(max_length=50)
-    bio = models.TextField()
-    profile_img = models.ImageField(upload_to="profile.image/", null=True, blank=True)
+    profile_title = models.CharField(max_length=50,null=True, blank=True)
+    bio = models.TextField(null=True, blank=True)
+    profile_img = models.ImageField(upload_to="profile.image/", null=True, blank=True,default='static\img\pro.png')
     resume = models.FileField(upload_to="resume/", null=True, blank=True)
-    location = models.CharField(max_length=50)
-    mobile_no = models.CharField(max_length=12)
-    working_sts = models.CharField(max_length=50, choices=worksts)
-    gender = models.CharField(max_length=50, choices=gender)
+    location = models.CharField(max_length=50,null=True, blank=True)
+    mobile_no = models.CharField(max_length=12,null=True, blank=True)
+    working_sts = models.CharField(max_length=50, choices=worksts,null=True, blank=True)
+    gender = models.CharField(max_length=50, choices=gender,null=True, blank=True)
     rel_profile = models.OneToOneField(
         Employee, on_delete=models.CASCADE, null=True, blank=True
     )

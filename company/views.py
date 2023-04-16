@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import CompanyProfile, JobPost
 from account.models import Company, Employee
 from employee.models import ApplyJob
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -32,33 +33,69 @@ def company_profile(request):
 
 def company_profile_edit(request):
     comp = request.user
-    if request.method == "POST":
-        company_name = request.POST.get("company_name")
-        slogan = request.POST.get("slogan")
-        company_logo = request.FILES.get("company_logo")
-        cover_image = request.FILES.get("cover_image")
-        about_disc = request.POST.get("about_disc")
-        about_img = request.FILES.get("about_img")
-        outh_title = request.POST.get("outh_title")
-        outh_disc = request.POST.get("outh_disc")
-        outh_img = request.FILES.get("outh_img")
-        location = request.POST.get("location")
+    profile = CompanyProfile.objects.filter(
+        rel_comp = comp
+    ).first()
+    if not profile:
+        if request.method == "POST":
+            company_name = request.POST.get("company_name")
+            slogan = request.POST.get("slogan")
+            company_logo = request.FILES.get("company_logo")
+            cover_image = request.FILES.get("cover_image")
+            about_disc = request.POST.get("about_disc")
+            about_img = request.FILES.get("about_img")
+            outh_title = request.POST.get("outh_title")
+            outh_disc = request.POST.get("outh_disc")
+            outh_img = request.FILES.get("outh_img")
+            location = request.POST.get("location")
 
-        CompanyProfile.objects.create(
-            company_name=company_name,
-            company_logo=company_logo,
-            company_prf_bg=cover_image,
-            company_slogam=slogan,
-            company_location=location,
-            about_us_img=about_img,
-            about_us_discpt=about_disc,
-            outher_det_title=outh_title,
-            outher_det_image=outh_img,
-            outher_det_discription=outh_disc,
-            rel_comp=comp,
-        )
-        return redirect("company_profile")
-    return render(request, "company/company_profile_edit.html")
+            CompanyProfile.objects.create(
+                company_name=company_name,
+                company_logo=company_logo,
+                company_prf_bg=cover_image,
+                company_slogam=slogan,
+                company_location=location,
+                about_us_img=about_img,
+                about_us_discpt=about_disc,
+                outher_det_title=outh_title,
+                outher_det_image=outh_img,
+                outher_det_discription=outh_disc,
+                rel_comp=comp,
+            )
+            return redirect("company_profile")
+        return render(request, "company/company_profile_edit.html")
+    elif profile:
+        print('hoi')
+        if request.method == "POST":
+            company_name = request.POST.get("company_name")
+            slogan = request.POST.get("slogan")
+            company_logo = request.FILES.get("company_logo")
+            cover_image = request.FILES.get("cover_image")
+            about_disc = request.POST.get("about_disc")
+            about_img = request.FILES.get("about_img")
+            outh_title = request.POST.get("outh_title")
+            outh_disc = request.POST.get("outh_disc")
+            outh_img = request.FILES.get("outh_img")
+            location = request.POST.get("location")
+
+            profile.company_name=company_name
+            profile.company_logo=company_logo
+            profile.company_prf_bg=cover_image
+            profile.company_slogam=slogan
+            profile.company_location=location
+            profile.about_us_img=about_img
+            profile.about_us_discpt=about_disc
+            profile.outher_det_title=outh_title
+            profile.outher_det_image=outh_img
+            profile.outher_det_discription=outh_disc
+            profile.rel_comp=comp
+            profile.save()
+            return redirect("company_profile")
+        context={
+            'profile':profile
+        }
+        return render(request, "company/company_profile_edit.html",context)
+        
 
 
 def post_job(request):
@@ -155,3 +192,12 @@ def applied_employee_profile(request, id):
 
     print("profile")
     return render(request, "company/applied_user_profile.html", context)
+
+
+def resume_view(request,id):
+    apl = ApplyJob.objects.get(id=id)
+    
+    with open(apl.rel_empl_post.resume.path, 'rb') as f:
+            response = HttpResponse(f.read(), content_type='application/pdf')
+            response['Content-Disposition'] = f'inline; filename="{apl.rel_empl_post.resume}"'
+            return response

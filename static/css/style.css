@@ -225,7 +225,7 @@
 .page-header .container {
     position: relative;
     padding: 45px 0 45px 35px;
-    border-left: 15px solid var(--secondary);
+    border-left: 15px solid #f60404;
 }
 
 .header-carousel .container::before,
@@ -238,7 +238,7 @@
     left: 0;
     width: 100px;
     height: 15px;
-    background: var(--primary);
+    background: #f60404;
 }
 
 .header-carousel .container::after,
@@ -298,8 +298,8 @@
 
 .header-carousel .owl-nav .owl-prev:hover,
 .header-carousel .owl-nav .owl-next:hover {
-    background: var(--primary);
-    border-color: var(--primary);
+    background:#f60404;
+    border-color:#f60404;
 }
 
 .page-header {

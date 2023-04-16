@@ -3,14 +3,14 @@
 
 {% block content %}
 {% load static %}
-    <div class="container-xxl bg-white p-0">
+    <div style="background-color: rgba(189, 195, 195, 0.21);" class="container-xxl  p-0">
 
         <!-- Job Detail Start -->
         <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container">
                 <div class="row gy-5 gx-4">
-                    <div class="col-lg-8">
-                        <div class="d-flex align-items-center mb-5">
+                    <div style="background-color: rgba(128, 193, 240, 0.168);box-shadow: 0px 0px 5px darkblue;" class="col-lg-8">
+                        <div style="box-shadow: 0px 0px 5px darkblue;padding: 5px; background-color: rgba(128, 193, 240, 0.452);" class="d-flex align-items-center mb-5">
                             <img class="flex-shrink-0 img-fluid border rounded" src="{{ post.rel_comp_comp.company_logo.url }}" alt="" style="width: 80px; height: 80px;">
                             <div class="text-start ps-4">
                                 <h3 class="mb-3">{{ post.jobtitle }}</h3>
@@ -22,16 +22,16 @@
                         </div>
 
                         <div class="mb-5">
-                            <h4 class="mb-3">Job description</h4>
+                            <h4 class="mb-3">Job description :</h4>
                             <p>{{ post.job_discription }}</p>
-                            <h4 class="mb-3">Responsibility</h4>
+                            <h4 class="mb-3">Responsibility :</h4>
                             <p>{{ post.required }}</p>
-                            <h4 class="mb-3">Qualifications</h4>
+                            <h4 class="mb-3">Qualifications :</h4>
                             <p>{{ post.education }}</p>
                         </div>
         
                         <div class="">
-                            <h4 class="mb-4">Apply For The Job</h4>
+                            <h6 class="mb-4">Apply For The Job</h6>
                             
                             <form  method="post">
                                 {% csrf_token %}
@@ -46,11 +46,11 @@
                             </form>
                         </div>
                     </div>
-                    {{apl.rel_profile_id}}
+                    
                     <!-- <a href="{% url 'apply_sts' post.id %}"><button>{% if apl.apply_status %} Apply {% else %} Closed {% endif %} </button></a> -->
 
                     <div class="col-lg-4">
-                        <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                        <div style="box-shadow: 0px 0px 5px darkblue;background-color:rgba(128, 193, 240, 0.452) ;" class=" rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
                             <h4 class="mb-4">Job Summery</h4>
                             <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: {{ post.posttime }}</p>
                             <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: {{ post.vacancy }}</p>
@@ -59,7 +59,7 @@
                             <p><i class="fa fa-angle-right text-primary me-2"></i>Location: {{ post.location }}</p>
                             <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Date Line: {{ post.last_date }}</p>
                         </div>
-                        <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
+                        <div style="box-shadow: 0px 0px 5px darkblue;background-color:rgba(128, 193, 240, 0.452) ;"  class=" rounded p-5 wow slideInUp" data-wow-delay="0.1s">
                             <h4 class="mb-4">Company Detail</h4>
                             <p class="m-0">{{ post.rel_comp_comp.about_us_discpt }}</p>
                         </div>

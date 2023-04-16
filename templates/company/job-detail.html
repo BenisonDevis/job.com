@@ -168,11 +168,11 @@
     <div class="container-xxl bg-white p-0">
 
         <!-- Job Detail Start -->
-        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container">
+        <div  class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div style="background-color: rgb(225, 211, 236);padding: 5px;box-shadow: 0px 0px 5px rgb(30, 0, 255);" class="container">
                 <div class="row gy-5 gx-4">
                     <div class="col-lg-8">
-                        <div class="d-flex align-items-center mb-5">
+                        <div style="background-color: rgb(213, 235, 242);padding: 5px;box-shadow: 0px 0px 5px rgb(30, 0, 255);"  class="d-flex align-items-center mb-5">
                             <img class="flex-shrink-0 img-fluid border rounded" src="{{ post.rel_comp_comp.company_logo.url }}" alt="" style="width: 80px; height: 80px;">
                             <div class="text-start ps-4">
                                 <h3 class="mb-3">{{ post.jobtitle }}</h3>
@@ -200,7 +200,7 @@
                                 <div class="row pt-3">
                                     <!-- Author-->
                                     {% for apl in apl %}
-                                    <div style="box-shadow: 0px 0px 5px crimson;" class="col-lg-3 col-sm-6 mb-30 pb-2">
+                                    <div style="box-shadow: 0px 0px 5px crimson;background-color: aliceblue; margin-left: 15px ;" class="col-lg-3 col-sm-6 mb-30 pb-2">
                                         <div class="team-card-style-3 mx-auto">
                                             <div class="team-thumb"><img src="{{ apl.rel_empl_post.profile_img.url }}" alt="Author Picture">
                                             </div>
@@ -209,7 +209,7 @@
                                             <a class="team-contact-link" href="{% url 'applied_employee_profile' apl.id %}">Profile Details</a>
                                             <div class="team-social-bar-wrap">
                                                 <div class="team-social-bar">
-                                                    <button>{{ apl.selected }}</button>
+                                                  <button>{{ apl.selected }}</button>
                                                 </div>
                                             </div>
                                         </div>

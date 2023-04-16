@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
-from account.models import Employee
 from company.models import JobPost
+from django.http import FileResponse,HttpResponse
 
 
 # Create your views here.
@@ -13,10 +13,12 @@ def employee_home(
     post = JobPost.objects.all()
     category = request.GET.get('category')
     jobtitle = request.GET.get('jobtitle')
+    location = request.GET.get('location')
     if category or jobtitle :
         post = post.filter(category__icontains=category)
         post = post.filter(jobtitle__icontains=jobtitle)
-
+    elif location:
+        post = post.filter(location__icontains=location)
     context = {"post": post}
     return render(request, "employees_pages/emp_home.html", context)
 
@@ -81,29 +83,64 @@ def employee_profile(request):
 
 def employee_profile_edit(request):
     emp = request.user
-    if request.method == "POST":
-        prof_titl = request.POST.get("prof_titl")
-        bio = request.POST.get("bio")
-        pro_img = request.FILES.get("pro_img")
-        pro_cv = request.FILES.get("pro_cv")
-        location = request.POST.get("location")
-        mob = request.POST.get("mob")
-        status = request.POST.get("status")
-        gender = request.POST.get("gender")
+    profile = ProfileEdit.objects.filter(
+        rel_profile = emp
+    ).first()
+    
+    if not profile:
+        
+        if request.method == "POST":
+            prof_titl = request.POST.get("prof_titl")
+            bio = request.POST.get("bio")
+            pro_img = request.FILES.get("pro_img")
+            pro_cv = request.FILES.get("pro_cv")
+            location = request.POST.get("location")
+            mob = request.POST.get("mob")
+            status = request.POST.get("status")
+            gender = request.POST.get("gender")
 
-        ProfileEdit.objects.create(
-            profile_title=prof_titl,
-            bio=bio,
-            profile_img=pro_img,
-            resume=pro_cv,
-            location=location,
-            mobile_no=mob,
-            working_sts=status,
-            gender=gender,
-            rel_profile=emp,
-        )
-        return redirect("employee_profile")
-    return render(request, "employees_pages/emp_edit_profile.html")
+            ProfileEdit.objects.create(
+                profile_title=prof_titl,
+                bio=bio,
+                profile_img=pro_img,
+                resume=pro_cv,
+                location=location,
+                mobile_no=mob,
+                working_sts=status,
+                gender=gender,
+                rel_profile=emp,
+            )
+            return redirect("employee_profile")
+        return render(request, "employees_pages/emp_edit_profile.html")
+    elif profile:
+        
+        if request.method == "POST":
+            prof_titl = request.POST.get("prof_titl")
+            bio = request.POST.get("bio")
+            pro_img = request.FILES.get("pro_img")
+            pro_cv = request.FILES.get("pro_cv")
+            location = request.POST.get("location")
+            mob = request.POST.get("mob")
+            status = request.POST.get("status")
+            gender = request.POST.get("gender")
+            
+            
+            profile.profile_title=prof_titl
+            profile.bio=bio
+            profile.profile_img=pro_img
+            profile.resume=pro_cv
+            profile.location=location
+            profile.mobile_no=mob
+            profile.working_sts=status
+            profile.gender=gender
+            profile.rel_profile=emp
+            profile.save()
+        
+            return redirect("employee_profile")
+        context={
+            'profile':profile
+        }
+        return render(request, "employees_pages/emp_edit_profile.html",context)
 
 
 def add_experiences(request):
@@ -180,3 +217,18 @@ def employee_appliedjob(request):
     context = {"apl": apl}
 
     return render(request, "employees_pages/applied_jobs.html", context)
+
+
+def resume_view(request):
+    emp = request.user
+    profile = ProfileEdit.objects.filter(
+        rel_profile=emp
+    ).first()
+    with open(profile.resume.path, 'rb') as f:
+            response = HttpResponse(f.read(), content_type='application/pdf')
+            response['Content-Disposition'] = f'inline; filename="{profile.resume}"'
+            return response
+
+
+
+

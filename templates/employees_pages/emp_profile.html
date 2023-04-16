@@ -263,7 +263,7 @@
 <div class="container">
 <div class="row">
     <div class="col-lg-4 col-xl-4">
-        <div class="card-box text-center bg-light " style="box-shadow: 0px 0px 10px black ;">
+        <div  class="card-box text-center  " style="box-shadow: 0px 0px 10px black ;background-color: rgba(229, 239, 248, 0.916);">
             <img src="{{ prof.profile_img.url }}" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
 
             <h4 class="mb-0">{{ request.user.first_name }} {{ request.user.last_name }}</h4>
@@ -272,7 +272,7 @@
             
             <a href="{% url 'employee_profile_edit' %}"><button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Edit</button></a>
             
-            <button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Resume</button>
+            <a href="{% url 'resume_view' %}"><button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Resume</button></a>
 
             <div class="text-left mt-3">
                 <h4 class="font-13 text-uppercase">About Me :</h4>
@@ -319,7 +319,7 @@
 
         <!-- Start Add skill  -->
 
-        <div class="card-box bg-light " style="box-shadow: 0px 0px 10px black ;">
+        <div class="card-box  " style="box-shadow: 0px 0px 10px black ;background-color: rgba(229, 239, 248, 0.916);">
             <!-- start project edit model -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4" data-whatever="@mdo">
                 Edit
@@ -377,7 +377,7 @@
     <div class="col-lg-8 col-xl-8">
         <div class="card-box" style="box-shadow: 0px 0px 10px blue;">
 
-            <div class="tab-content bg-light" style="box-shadow: 0px 0px 10px rgb(13, 13, 13);">
+            <div class="tab-content " style="box-shadow: 0px 0px 10px rgb(13, 13, 13);background-color: rgba(229, 239, 248, 0.916);">
                 
                 <div class="tab-pane show active" id="about-me">
                     <!-- start project edit model -->

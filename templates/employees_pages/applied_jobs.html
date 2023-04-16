@@ -2,12 +2,15 @@
 
 
 {% block content %}
-<h4><u>Applied Jobs</u></h4>
+<h4 style="text-align: center;">Applied Jobs</h4>
 <br>
+<div class="container">
+
+
 {% for post in apl %}
         
                         
-    <div style="box-shadow: 0px 0px 10px darkblue;" class="job-item p-4 mb-4">
+    <div style="box-shadow: 0px 0px 10px darkblue;background-color: aliceblue;" class="job-item p-4 mb-4">
         
         
         <div class="row g-4">
@@ -36,6 +39,6 @@
     </div>
                                         
 {% endfor %}
-    
+</div>  
 {% endblock content %}
     
