@@ -9,13 +9,16 @@ class Account(AbstractUser):
         COMPANY = "COMPANY", "Company"
 
     base_role = Role.ADMIN
-
+    is_active = models.BooleanField(default=False)
+    can_login = models.BooleanField(default=True)
     role = models.CharField(max_length=50, choices=Role.choices)
-
+    
+    
     def save(self, *args, **kwargs):
+        print(self.pk)
         if not self.pk:
             self.role = self.base_role
-            return super().save(*args, **kwargs)
+        return super().save(*args, **kwargs)
 
 
 class EmployeeManager(BaseUserManager):
@@ -42,6 +45,7 @@ class CompanyManager(BaseUserManager):
 
 
 class Company(Account):
+    
     base_role = Account.Role.COMPANY
     company = CompanyManager()
 

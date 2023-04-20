@@ -100,24 +100,24 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="">Working Status</label><br>
-                                        
-                                        <input value="I'm Fresher" name="status" type="radio">
+                                       
+                                        <input {% if profile.working_sts == "I'm Fresher"%} checked {% endif %} value="I'm Fresher" name="status" type="radio">
                                         <label for="">I'm Fresher</label>
                                         <br>
-                                        <input value="I'm Experienced" name="status" type="radio">
+                                        <input {% if profile.working_sts == "I'm Experienced"%} checked {% endif %} value="I'm Experienced" name="status" type="radio">
                                         <label for="">I'm Experienced</label>
 
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputFirstName">Gender</label><br>
                                         
-                                        <input  value="Male" name="gender" type="radio" >
+                                        <input {% if profile.gender == 'Male'%} checked {% endif %} value="Male" name="gender" type="radio" >
                                         <label for="inputFirstName">Male</label>
                                         <br>
-                                        <input value="Female" name="gender" type="radio" >
+                                        <input {% if profile.gender == 'Female' %} checked {% endif %} value="Female" name="gender" type="radio" >
                                         <label for="inputFirstName">Female</label>
                                         <br>
-                                        <input value="Other" name="gender" type="radio">
+                                        <input {% if profile.gender ==  'Other' %} checked {% endif %} value="Other" name="gender" type="radio">
                                         <label for="inputFirstName">Other</label>
                                     </div>
                                     <button>Save</button>

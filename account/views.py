@@ -57,6 +57,7 @@ def employee_create(request):
                     last_name=lname,
                     email=email,
                     password=pasw1,
+                    is_active =True
                 )
                 messages.success(request, "Account create Successfuly")
                 return redirect("user_login")
@@ -103,15 +104,16 @@ def user_login(request):
         password = request.POST.get("password")
 
         user = authenticate(username=username, password=password)
-
+        
         if user:
             login(request, user)
             messages.success(request, "Login")
             if request.user.role == "USER":
                 return redirect("employee_home")
-            elif request.user.role == "COMPANY":
+            elif request.user.role == "COMPANY":               
                 return redirect("company_home")
-
+            elif request.user.role == "ADMIN":
+                return redirect("admin_homepage")
         else:
             messages.error(request, "invalid username or password")
 

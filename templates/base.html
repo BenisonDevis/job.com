@@ -73,6 +73,9 @@
                             <a href="{% url 'company_home' %}" class="nav-item nav-link active">Home</a>
                             <a href="{% url 'post_job' %}" class="nav-item nav-link">Post Job</a>
                             <a href="{% url 'company_profile' %}" class="nav-item nav-link" class="">Profile</a>
+                        {% elif request.user.role == 'ADMIN' %}
+                            <a href="{% url 'admin_homepage' %}" class="nav-item nav-link active">Home</a>
+                            
                         {% endif %}
                         
                     {% endif %}
@@ -96,6 +99,13 @@
                 </div>
                 <!-- class="btn btn-primary rounded-0 py-4 px-lg-0 d-none d-lg-block" -->
                 {% if request.user.is_authenticated %}
+                    
+                    {% if request.user.role == 'COMPANY' %}
+                        <button style="margin: 5px;" type="button" class="btn btn-danger">
+                            <i class="fa fa-bell" aria-hidden="true"></i> <span style="background-color: blue; border-radius: 10px; padding: 2px;" class="badge-pill ">9</span>
+                            <span class="sr-only">unread messages</span>
+                        </button>
+                    {%endif %}
                     <a href="{% url 'user_logout' %}" ><button class="button-1" >Logout</button></i></a>
                 {% else %}
                     <a href="{% url 'user_login' %}" ><button class="button-1" >Login</button></i></a>

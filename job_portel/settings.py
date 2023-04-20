@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "employee",
     "company",
     "category",
+    "adminpanel",
 ]
 
 MIDDLEWARE = [

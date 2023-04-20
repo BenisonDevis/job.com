@@ -32,7 +32,10 @@ def job_details(request, id):
 
         if apl:
             ApplyJob.objects.create(
-                apply_status=True, rel_profile=user, rel_post=post, rel_empl_post=prof
+                apply_status=True, 
+                rel_profile=user, 
+                rel_post=post, 
+                rel_empl_post=prof
             )
 
             return redirect("job_details", post.id)
@@ -127,8 +130,10 @@ def employee_profile_edit(request):
             
             profile.profile_title=prof_titl
             profile.bio=bio
-            profile.profile_img=pro_img
-            profile.resume=pro_cv
+            if pro_img:
+                profile.profile_img=pro_img
+            if pro_cv:
+                profile.resume=pro_cv
             profile.location=location
             profile.mobile_no=mob
             profile.working_sts=status

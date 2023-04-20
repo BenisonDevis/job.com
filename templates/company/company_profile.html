@@ -382,90 +382,85 @@
       }
 </style>
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div style="background-color: #c7eff560;box-shadow: 0px 0px 5px #333;" class="container">
-<div class="row">
-    <div class="col-sm-12 col-sm-offset-2">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <div style="background-color: #c7eff560;box-shadow: 0px 0px 5px #333;" class="container">
+    <div class="row">
+      <div class="col-sm-12 col-sm-offset-2">
         <div class="panel panel-white profile-widget">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="image-container bg2" style="background:url({{ edit_pro.company_prf_bg.url }})">  
-                      <img src="{{ edit_pro.company_logo.url }}" class="avatar" alt="avatar"> 
-                    </div>
+          <div class="row">
+            <div class="col-sm-12">
+
+              {% if not edit_pro.company_prf_bg and not edit_pro.company_logo %}
+              <div class="image-container bg2" style="background:url(https://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg)">  
+                  <img src="{% static 'img/pro.png' %}" class="avatar" alt="avatar"> 
                 </div>
-                <div class="col-sm-12">
-                    <div class="details">
-                        <h4>{{ edit_pro.company_name }} <i class="fa fa-sheild"></i></h4>
-                        <div>{{ edit_pro.company_slogam }}</div>
-                        <div><small>{{edit_pro.company_location}}</small></div>
-                        
-                        <div class="mg-top-10">
-                            <a href="{% url 'company_profile_edit' %}" class="btn btn-secondary">Edit Profile</a>
-                            <a href="{% url 'post_job' %}" class="btn btn-success">Post Job</a>
-                        </div>
-                    </div>
+              {% elif edit_pro.company_prf_bg and edit_pro.company_logo %}
+                <div class="image-container bg2" style="background:url({{ edit_pro.company_prf_bg.url }})">  
+                  <img src="{{ edit_pro.company_logo.url }}" class="avatar" alt="avatar"> 
                 </div>
-                 
+              {% endif %}
+                
+              
             </div>
+            <div class="col-sm-12">
+              <div class="details">
+                <h4>{{ edit_pro.company_name }} <i class="fa fa-sheild"></i></h4>
+                <div>{{ edit_pro.company_slogam }}</div>
+                <div><small>{{edit_pro.company_location}}</small></div>
+                  
+                  <div class="mg-top-10">
+                    <a href="{% url 'company_profile_edit' %}" class="btn btn-secondary">Edit Profile</a>
+                    <a href="{% url 'post_job' %}" class="btn btn-success">Post Job</a>
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </div>
         </div>
-    </div>
-    <div class="col-sm-6 col-sm-offset-2 pr-3"></div>
-        <div class="row">
-            
-            <div style="box-shadow: 0px 0px 5px #333;" class="col-sm-6">
-                <div class="panel panel-white post">
-                    <div class="post-heading">
-                       
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                              <a href="#"><b>About Us</b></a>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="post-image">
-                        <img src=""><img src="{{ edit_pro.about_us_img.url }}" class="image" alt="image post">
-                    </div>
-                    <div class="post-description">
-                      <p>{{ edit_pro.about_us_discpt }}</p>
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <div style="box-shadow: 0px 0px 5px #333;" class="col-sm-6">
-                <div class="panel panel-white post">
-                    <div class="post-heading">
-                        
-                        <div class="pull-left meta">
-                            <div class="title h5">
-                                <a href="#"><b>{{ edit_pro.outher_det_title }}</b></a>
-                              
-                            </div>
-                            
-                        </div>
-                    </div> 
-                    <div class="post-image">
-                      <img src=""><img src="{{ edit_pro.outher_det_image.url }}" class="image" alt="image post">
-                    </div>
-                    <div class="post-description"> 
-                      <p>{{ edit_pro.outher_det_discription }}</p>
-                    </div>
-                    
-                              
-                    </div>
-                </div>
-            </div>
-             
-                                                                            
-            
-        </div>
+        <div class="col-sm-6 col-sm-offset-2 pr-3"></div>
+          <div class="row">
         
+            <div style="box-shadow: 0px 0px 5px #333;" class="col-sm-6">
+              <div class="panel panel-white post">
+                <div class="post-heading">
+                  <div class="pull-left meta">
+                    <div class="title h5">
+                      <a href="#"><b>About Us</b></a>
+                    </div>
+                      
+                  </div>
+                </div>
+                <div class="post-image">
+                  <img src=""><img src="{{ edit_pro.about_us_img.url }}" class="image" alt="image post">
+                </div>
+                <div class="post-description">
+                  <p>{{ edit_pro.about_us_discpt }}</p>
+                </div>
+              </div>
+            </div>
+        
+            <div style="box-shadow: 0px 0px 5px #333;" class="col-sm-6">
+              <div class="panel panel-white post">
+                <div class="post-heading"> 
+                  <div class="pull-left meta">
+                    <div class="title h5">
+                      <a href="#"><b>{{ edit_pro.outher_det_title }}</b></a>  
+                    </div>  
+                  </div>
+                </div> 
+                <div class="post-image">
+                  <img src=""><img src="{{ edit_pro.outher_det_image.url }}" class="image" alt="image post">
+                </div>
+                <div class="post-description"> 
+                  <p>{{ edit_pro.outher_det_discription }}</p>
+                </div>
+                         
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-</div>
-</div>
-
-    
+  </div>
 {% endblock content %}
     
