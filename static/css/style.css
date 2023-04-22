@@ -221,14 +221,14 @@
 }
 
 /*** Header ***/
-.header-carousel .container,
+/* .header-carousel .container,
 .page-header .container {
     position: relative;
     padding: 45px 0 45px 35px;
     border-left: 15px solid #f60404;
-}
+} */
 
-.header-carousel .container::before,
+/* .header-carousel .container::before,
 .header-carousel .container::after,
 .page-header .container::before,
 .page-header .container::after {
@@ -239,7 +239,7 @@
     width: 100px;
     height: 15px;
     background: #f60404;
-}
+} */
 
 .header-carousel .container::after,
 .page-header .container::after {

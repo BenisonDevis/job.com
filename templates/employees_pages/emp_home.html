@@ -2,17 +2,23 @@
 
 {% block content %}
 {% load static %}
+<style>
+    .joblist11{
+        background-image: ;
+        
+    }
+</style>
 
 <!-- Carousel Start -->
 <div class="container-fluid p-0">
     <div class="owl-carousel header-carousel position-relative">
         <div class="owl-carousel-item position-relative">
-            <img style="height: 500px;" class="img-fluid" src="{% static 'img/job4.jpg' %}" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(20, 21, 21, 0.41);">
+            <img style="height: 500px;" class="img-fluid" src="{% static 'img/job11.png' %}" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(20, 21, 21, 0);">
                 <div class="container">
                     <div class="row justify-content-start">
                         <div class="col-10 col-lg-8">
-                            <p style="text-shadow: 5px 5px 5px black;font-size: 60px; font-weight: bold;color: rgb(246, 248, 244);" class="coursel-heading" class="display-3 text-white animated slideInDown mb-4">Find The Perfect Job <br>  That You Deserved</p>
+                            <p style="text-shadow: 5px 5px 5px black;font-size: 60px; font-weight: bold;color: rgb(246, 248, 244);" class="coursel-heading" class="display-3 text-white animated slideInDown mb-4">The Easiest Way to<br>  Get Your New Job</p>
                             <!-- <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p> -->
                             <!-- <a href="" class="btn btn-primary py-md-2 px-md-4 me-3 animated slideInLeft">Search A Job</a>
                             <a href="" class="btn btn-secondary py-md-2 px-md-4 animated slideInRight">Find A Talent</a> -->
@@ -22,12 +28,12 @@
             </div>
         </div>
         <div class="owl-carousel-item position-relative">
-            <img style="height: 500px;" class="img-fluid" src="{% static 'img/job5.jpg' %}" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(20, 21, 21, 0.41)">
+            <img style="height: 500px;" class="img-fluid" src="{% static 'img/job11.png' %}" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(20, 21, 21, 0)">
                 <div class="container">
                     <div class="row justify-content-start">
                         <div class="col-10 col-lg-8">
-                            <p style="text-shadow: 5px 5px 5px black;font-size: 60px; font-weight: bold;color: rgb(253, 253, 253);" class="coursel-heading" class="display-3 text-white animated slideInDown mb-4">Find The Best Startup Job <br>  That Fit You</p>
+                            <p style="text-shadow: 5px 5px 5px black;font-size: 60px; font-weight: bold;color: rgb(253, 253, 253);" class="coursel-heading" class="display-3 text-white animated slideInDown mb-4">Your Dream Jobs is Waiting </p>
                             <!-- <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p> -->
                             <!-- <a href="" class="btn btn-primary py-md-2 px-md-4 me-3 animated slideInLeft">Search A Job</a>
                             <a href="" class="btn btn-secondary py-md-2 px-md-4 animated slideInRight">Find A Talent</a> -->
@@ -81,62 +87,62 @@
 
 
 <!-- Category Start -->
-<div class="container-xxl py-5">
+<div class="container-xxl py-">
     <div class="container">
-        <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore By Category</h1>
-        <div class="row g-4">
+        <h1 style="color: white;" class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore By Category</h1>
+        <div  class="row g-4">
             <div  class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-color: aliceblue;" class="cat-item rounded p-4" href="{% url 'it_field' %}">
-                    <i style="color: crimson;" class="fa fa-3x fa-laptop  mb-4"></i>
+                <a  style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;" class="cat-item rounded p-4" href="{% url 'it_field' %}">
+                    <i style="color: white;" class="fa fa-3x fa-laptop  mb-4"></i>
                     <h6 class="mb-3">IT field</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-color: aliceblue;" class="cat-item rounded p-4" href="{% url 'customer_service' %}">
-                    <i style="color: crimson;" class="fa fa-3x fa-headset  mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;" class="cat-item rounded p-4" href="{% url 'customer_service' %}">
+                    <i style="color: white;" class="fa fa-3x fa-headset  mb-4"></i>
                     <h6 class="mb-3">Customer Service</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-color: aliceblue;" class="cat-item rounded p-4" href="{% url 'human_resource' %}">
-                    <i style="color: crimson;" class="fa fa-3x fa-user-tie  mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;" class="cat-item rounded p-4" href="{% url 'human_resource' %}">
+                    <i style="color: white;" class="fa fa-3x fa-user-tie  mb-4"></i>
                     <h6 class="mb-3">Human Resource</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-color: aliceblue;" class="cat-item rounded p-4" href="{% url 'work_from_home' %}">
-                    <i style="color: crimson;" class="fa fa-3x fa-home  mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;background-size: 100% 100%;" class="cat-item rounded p-4" href="{% url 'work_from_home' %}">
+                    <i style="color: white;" class="fa fa-3x fa-home  mb-4"></i>
                     <h6 class="mb-3">Work From Home</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-color: aliceblue;" class="cat-item rounded p-4" href="{% url 'mechanical_job' %}">
-                    <i style="color: crimson;"class="fa fa-3x fa-cogs  mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}'); background-attachment:fixed;" class="cat-item rounded p-4" href="{% url 'mechanical_job' %}">
+                    <i style="color: white;"class="fa fa-3x fa-cogs  mb-4"></i>
                     <h6 class="mb-3">Mechanical Jobs</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-color: aliceblue;" class="cat-item rounded p-4" href="{% url 'automobile' %}">
-                    <i style="color: crimson;" class="fa fa-3x fa-car  mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}'); background-attachment: fixed;" class="cat-item rounded p-4" href="{% url 'automobile' %}">
+                    <i style="color: white;" class="fa fa-3x fa-car  mb-4"></i>
                     <h6 class="mb-3">Automobile</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-color: aliceblue;" class="cat-item rounded p-4" href="{% url 'education' %}">
-                    <i style="color: crimson;" class="fa fa-3x fa-university  mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;background-size: 100% 100%;" class="cat-item rounded p-4" href="{% url 'education' %}">
+                    <i style="color: white;" class="fa fa-3x fa-university  mb-4"></i>
                     <h6 class="mb-3">Teaching & Education</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-color: aliceblue;" class="cat-item rounded p-4" href="{% url 'design' %}">
-                    <i style="color: crimson;" class="fa fa-3x fa-drafting-compass  mb-4"></i>
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;background-size: 100% 100%;" class="cat-item rounded p-4" href="{% url 'design' %}">
+                    <i style="color: white;" class="fa fa-3x fa-drafting-compass  mb-4"></i>
                     <h6 class="mb-3">Design & Creative</h6>
                     
                 </a>
@@ -149,7 +155,7 @@
 <!-- Jobs Start -->
 <div class="container-xxl py-5">
     <div class="container">
-        <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
+        <h1 style="color: white;" class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
         <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
             
             <div class="tab-content">
@@ -160,15 +166,15 @@
                     
                     {% if post.status %}
 
-                        <div style="box-shadow: 0px 0px 10px darkblue;background-color: aliceblue;" class="job-item p-4 mb-4">
+                        <div style=" border-radius: 25px; color: white;box-shadow: 0px 0px 15px rgb(7, 7, 12);padding: 50px;background-image: url('{% static 'img/newlist.jpg' %}');background-size: 100% 100%;" class="job-item  mb-4">
                             
             
                             <div class="row g-4">
                                 <div class="col-sm-12 col-md-8 d-flex align-items-center">
                                     <img class="flex-shrink-0 img-fluid border rounded" src="{{post.rel_comp_comp.company_logo.url}}" alt="" style="width: 80px; height: 80px;">
                                     <div class="text-start ps-4">
-                                        <h5 class="mb-3">{{ post.jobtitle }}</h5>
-                                        <h6>{{post.rel_comp_comp}}</h6>
+                                        <h5 style="color: white;" class="mb-3">{{ post.jobtitle }}</h5>
+                                        <h6 style="color: white;">{{post.rel_comp_comp}}</h6>
                                         <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ post.location }}</span>
                                         <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{ post.jobtype }}</span>
                                         <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>₹{{ post.price_range }}</span>

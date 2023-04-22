@@ -8,12 +8,12 @@
 <div class="container-fluid p-0">
     <div class="owl-carousel header-carousel position-relative">
         <div class="owl-carousel-item position-relative">
-            <img style="height: 500px;" class="img-fluid" src="{% static 'img/1111.png' %}" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(43, 57, 64, .5);">
+            <img style="height: 600px;" class="img-fluid" src="{% static 'img/2222.jpg' %}" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(1, 4, 5, 0.129);">
                 <div class="container">
                     <div class="row justify-content-start">
                         <div class="col-10 col-lg-8">
-                            <h1 class="coursel-heading" class="display-3 text-white animated slideInDown mb-4">Find The Perfect Employee</h1>
+                            <p style="font-size: 60px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="coursel-heading" class="display-3 text-white animated slideInDown mb-4">Find The Perfect <br> Employee</p>
                             <!-- <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p> -->
                             <!-- <a href="" class="btn btn-primary py-md-2 px-md-4 me-3 animated slideInLeft">Search A Job</a>
                             <a href="" class="btn btn-secondary py-md-2 px-md-4 animated slideInRight">Find A Talent</a> -->
@@ -23,12 +23,12 @@
             </div>
         </div>
         <div class="owl-carousel-item position-relative">
-            <img style="height: 500px;" class="img-fluid" src="{% static 'img/carousel-2.jpg' %}" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(43, 57, 64, .5);">
+            <img style="height: 600px;" class="img-fluid" src="{% static 'img/3333.png' %}" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(9, 9, 9, 0.34);">
                 <div class="container">
                     <div class="row justify-content-start">
                         <div class="col-10 col-lg-8">
-                            <h1 class="coursel-heading" class="display-3 text-white animated slideInDown mb-4">Find The Best Startup Employee</h1>
+                            <p style="font-size: 60px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="coursel-heading" class="display-3 text-white animated slideInDown mb-4">More than 100000+ Employees here </p>
                             <!-- <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p> -->
                             <!-- <a href="" class="btn btn-primary py-md-2 px-md-4 me-3 animated slideInLeft">Search A Job</a>
                             <a href="" class="btn btn-secondary py-md-2 px-md-4 animated slideInRight">Find A Talent</a> -->
@@ -58,15 +58,15 @@
                     
                     
                         
-                    <div style="box-shadow: 0px 0px 10px darkblue;background-color: aliceblue;" class="job-item p-4 mb-4">
+                    <div style=" border-radius: 25px; color: white;box-shadow: 0px 0px 15px rgb(7, 7, 12);padding: 50px;background-image: url('{% static 'img/newlist.jpg' %}');background-size: 100% 100%;" class="job-item  mb-4">
                         
         
                         <div class="row g-4">
                             <div class="col-sm-12 col-md-8 d-flex align-items-center">
                                 <img class="flex-shrink-0 img-fluid border rounded" src="{{post.rel_comp_comp.company_logo.url}}" alt="" style="width: 80px; height: 80px;">
                                 <div class="text-start ps-4">
-                                    <h5 class="mb-3">{{ post.jobtitle }}</h5>
-                                    <h6>{{post.rel_comp_comp}}</h6>
+                                    <h5 style="color: crimson;" class="mb-3">{{ post.jobtitle }}</h5>
+                                    <h6 style="color: blue;">{{post.rel_comp_comp}}</h6>
                                     <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ post.location }}</span>
                                     <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{ post.jobtype }}</span>
                                     <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>₹{{ post.price_range }}</span>
@@ -89,7 +89,7 @@
                    
                         
                     {% endfor %}
-                    <a class="btn btn-primary py-3 px-5" href="">Browse More Jobs</a>
+                   
                 </div>
             </div>
         </div>

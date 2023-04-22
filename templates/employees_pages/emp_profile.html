@@ -263,7 +263,7 @@
 <div class="container">
 <div class="row">
     <div class="col-lg-4 col-xl-4">
-        <div  class="card-box text-center  " style="box-shadow: 0px 0px 10px black ;background-color: rgba(229, 239, 248, 0.916);">
+        <div  class="card-box text-center  " style="box-shadow: 0px 0px 10px black ;background-image: url('{% static 'img/prolh.jpg' %}');">
             
             {% if prof.profile_img %}
                 <img src="{{ prof.profile_img.url }}" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image"> 
@@ -273,8 +273,8 @@
                 
             
 
-            <h4 class="mb-0">{{ request.user.first_name }} {{ request.user.last_name }}</h4>
-            <p class="text-muted">{{ prof.profile_title }}</p>
+            <h4 style="color: white;" class="mb-0">{{ request.user.first_name }} {{ request.user.last_name }}</h4>
+            <p style="color: white;">{{ prof.profile_title }}</p>
 
             
             <a href="{% url 'employee_profile_edit' %}"><button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Edit</button></a>
@@ -286,24 +286,24 @@
             {% endif %}
                 
 
-            <div class="text-left mt-3">
-                <h4 class="font-13 text-uppercase">About Me :</h4>
-                <p class="text-muted font-13 mb-3">
+            <div style="color: white;" class="text-left mt-3">
+                <h4 style="color: white;" class="font-13 text-uppercase">About Me :</h4>
+                <p class="font-13 mb-3">
                     {{ prof.bio }}
                 </p>
-                <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">{{ request.user.first_name }} {{ request.user.last_name }}</span></p>
+                <p class=" mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">{{ request.user.first_name }} {{ request.user.last_name }}</span></p>
                 
-                <p class="text-muted mb-1 font-13"><strong>gender :</strong> <span class="ml-2"> 
+                <p class="mb-1 font-13"><strong>gender :</strong> <span class="ml-2"> 
                     {{prof.gender}}
                 </span></p>
 
-                <p class="text-muted mb-2 font-13"><strong>Working Status :</strong><span class="ml-2">{{ prof.working_sts }}</span></p>
+                <p class=" mb-2 font-13"><strong>Working Status :</strong><span class="ml-2">{{ prof.working_sts }}</span></p>
                 
-                <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ml-2">{{ prof.mobile_no }}</span></p>
+                <p class=" mb-2 font-13"><strong>Mobile :</strong><span class="ml-2">{{ prof.mobile_no }}</span></p>
 
-                <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">{{ request.user.email }}</span></p>
+                <p class="mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">{{ request.user.email }}</span></p>
 
-                <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ml-2">{{ prof.location }}</span></p>
+                <p class="mb-1 font-13"><strong>Location :</strong> <span class="ml-2">{{ prof.location }}</span></p>
             
 
             </div>
@@ -326,7 +326,7 @@
 
         <!-- Start Add skill  -->
 
-        <div class="card-box  " style="box-shadow: 0px 0px 10px black ;background-color: rgba(229, 239, 248, 0.916);">
+        <div class="card-box  " style="box-shadow: 0px 0px 10px black ;background-image: url('{% static 'img/prolh.jpg' %}');">
             <!-- start project edit model -->
             <button style="background-color: cornflowerblue;color: white;" type="button" class="btn " data-toggle="modal" data-target="#exampleModal4" data-whatever="@mdo">
                 Edit
@@ -362,7 +362,7 @@
                 </div>
               </div>
               <!-- End project edit model -->
-            <h4 class="header-title">Skills</h4>
+            <h4 style="color: white;" class="header-title">Skills</h4>
             
             {% if not skl %}
                 <div class="pt-1">
@@ -376,7 +376,7 @@
             {% else %}
                 {% for addskl in skl %} 
                     <div class="pt-1">
-                        <h6 class="text-uppercase mt-0">{{addskl.skill}} <span class="float-right">{{addskl.percentage}}%</span></h6>
+                        <h6 style="color: white;" class="text-uppercase mt-0">{{addskl.skill}} <span class="float-right">{{addskl.percentage}}%</span></h6>
                         <div class="progress progress-sm m-0">
                             <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="{{addskl.percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{addskl.percentage}}%">
                                 <span class="sr-only">{{addskl.percentage}}% Complete</span>
@@ -394,19 +394,19 @@
     <div class="col-lg-8 col-xl-8">
         <div class="card-box" style="box-shadow: 0px 0px 10px blue;">
 
-            <div class="tab-content " style="box-shadow: 0px 0px 10px rgb(13, 13, 13);background-color: rgba(229, 239, 248, 0.916);">
+            <div class="tab-content " style="padding: 20px;box-shadow: 0px 0px 10px rgb(13, 13, 13);background-image: url('{% static 'img/pronewc.jpg' %}');background-size: 100% 100%;">
                 
                 <div class="tab-pane show active" id="about-me">
                     <!-- start project edit model -->
                     <button style="background-color: cornflowerblue;color: white;" type="button" class="btn " data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                         Edit
-                      </button>
+                    </button>
                   
-                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div  class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Add Experience</h5>
+                              <h5  class="modal-title" id="exampleModalLabel">Add Experience</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
@@ -437,24 +437,24 @@
                         </div>
                       </div>
                       <!-- End project edit model -->
-                    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-briefcase mr-1"></i>Experience</h5>
+                    <h5 style="color: white;" class="mb-4 text-uppercase"><i class="mdi mdi-briefcase mr-1"></i>Experience</h5>
 
-                    <ul class="list-unstyled timeline-sm">
+                    <ul style="color: white;" class="list-unstyled timeline-sm">
                         
                         {% if not exp %}
                             <li class="timeline-sm-item">
-                                <span class="timeline-sm-date">year-year</span>
-                                <h5 class="mt-0 mb-1">Job role</h5>
-                                <p>Company Name</p>
+                                <span style="color: white;" class="timeline-sm-date">year-year</span>
+                                <h5 style="color: white;" class="mt-0 mb-1">Job role</h5>
+                                <p style="color: white;">Company Name</p>
                                 <p class="text-muted mt-2">{{ addexp.job_dicription }}</p>
                             </li>
                         {% else %}
                             {% for addexp in exp %}
-                                <li class="timeline-sm-item">
-                                    <span class="timeline-sm-date">{{ addexp.date }}</span>
-                                    <h5 class="mt-0 mb-1">{{ addexp.job_role }}</h5>
-                                    <p>{{ addexp.company_name }}</p>
-                                    <p class="text-muted mt-2">{{ addexp.job_dicription }}</p>
+                                <li  class="timeline-sm-item">
+                                    <span  class="timeline-sm-date">{{ addexp.date }}</span>
+                                    <h5 style="color: white;" class="mt-0 mb-1">{{ addexp.job_role }}</h5>
+                                    <p >{{ addexp.company_name }}</p>
+                                    <p style="color: white;" class=" mt-2">{{ addexp.job_dicription }}</p>
                                 </li>
                             {% endfor %} 
                         {% endif %}
@@ -501,7 +501,7 @@
                         </div>
                       </div>
                       <!-- End project edit model -->
-                    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-library"></i>
+                    <h5 style="color: white;" class="mb-4 text-uppercase"><i class="mdi mdi-library"></i>
                         
                         Education</h5>
 
@@ -516,11 +516,11 @@
                             </li>
                         {% else %}
                             {% for addedu in educ %}
-                                <li class="timeline-sm-item">
+                                <li style="color: white;" class="timeline-sm-item">
                                     <span class="timeline-sm-date">{{ addedu.date }}</span>
-                                    <h5 class="mt-0 mb-1">{{ addedu.qualification }}</h5>
+                                    <h5 style="color: white;" class="mt-0 mb-1">{{ addedu.qualification }}</h5>
                                     <p>{{ addedu.school }}</p>
-                                    <p class="text-muted mt-2">{{ addedu.shor_dicription }}</p>
+                                    <p class=" mt-2">{{ addedu.shor_dicription }}</p>
                                 </li>
                             {% endfor %} 
                         {% endif %}
@@ -568,7 +568,7 @@
                         </div>
                       </div>
                       <!-- End project edit model -->
-                    <h5 class="mb-3 mt-4 text-uppercase"><i class="mdi mdi-cards-variant mr-1"></i>
+                    <h5 style="color: white;" class="mb-3 mt-4 text-uppercase"><i class="mdi mdi-cards-variant mr-1"></i>
                         Projects
                     </h5>
 
@@ -583,11 +583,11 @@
                             </li>
                         {% else %}
                         {% for addpro in pro %}
-                            <li class="timeline-sm-item">
+                            <li style="color: white;" class="timeline-sm-item">
                                 <span class="timeline-sm-date">{{ addedu }}</span>
-                                <h5 class="mt-0 mb-1">{{ addpro.pro_name }}</h5>
+                                <h5 style="color: white;"  class="mt-0 mb-1">{{ addpro.pro_name }}</h5>
                                 <p>{{ addpro.domine }}</p>
-                                <p class="text-muted mt-2">{{ addpro.shor_dicription }}</p>
+                                <p class=" mt-2">{{ addpro.shor_dicription }}</p>
                             </li>
                         {% endfor %}    
                         {% endif %}

@@ -36,19 +36,19 @@ def company_profile_edit(request):
     profile = CompanyProfile.objects.filter(
         rel_comp = comp
     ).first()
-    if not profile:
-        if request.method == "POST":
-            company_name = request.POST.get("company_name")
-            slogan = request.POST.get("slogan")
-            company_logo = request.FILES.get("company_logo")
-            cover_image = request.FILES.get("cover_image")
-            about_disc = request.POST.get("about_disc")
-            about_img = request.FILES.get("about_img")
-            outh_title = request.POST.get("outh_title")
-            outh_disc = request.POST.get("outh_disc")
-            outh_img = request.FILES.get("outh_img")
-            location = request.POST.get("location")
-
+    
+    if request.method == "POST":
+        company_name = request.POST.get("company_name")
+        slogan = request.POST.get("slogan")
+        company_logo = request.FILES.get("company_logo")
+        cover_image = request.FILES.get("cover_image")
+        about_disc = request.POST.get("about_disc")
+        about_img = request.FILES.get("about_img")
+        outh_title = request.POST.get("outh_title")
+        outh_disc = request.POST.get("outh_disc")
+        outh_img = request.FILES.get("outh_img")
+        location = request.POST.get("location")
+        if not profile :
             CompanyProfile.objects.create(
                 company_name=company_name,
                 company_logo=company_logo,
@@ -63,38 +63,28 @@ def company_profile_edit(request):
                 rel_comp=comp,
             )
             return redirect("company_profile")
-        return render(request, "company/company_profile_edit.html")
-    elif profile:
-        print('hoi')
-        if request.method == "POST":
-            company_name = request.POST.get("company_name")
-            slogan = request.POST.get("slogan")
-            company_logo = request.FILES.get("company_logo")
-            cover_image = request.FILES.get("cover_image")
-            about_disc = request.POST.get("about_disc")
-            about_img = request.FILES.get("about_img")
-            outh_title = request.POST.get("outh_title")
-            outh_disc = request.POST.get("outh_disc")
-            outh_img = request.FILES.get("outh_img")
-            location = request.POST.get("location")
-
+        
+        elif profile :
             profile.company_name=company_name
-            profile.company_logo=company_logo
+            if company_logo:
+                profile.company_logo=company_logo
             profile.company_prf_bg=cover_image
             profile.company_slogam=slogan
             profile.company_location=location
-            profile.about_us_img=about_img
+            if about_img:
+                profile.about_us_img=about_img
             profile.about_us_discpt=about_disc
             profile.outher_det_title=outh_title
-            profile.outher_det_image=outh_img
+            if outh_img:
+                profile.outher_det_image=outh_img
             profile.outher_det_discription=outh_disc
             profile.rel_comp=comp
             profile.save()
             return redirect("company_profile")
-        context={
-            'profile':profile
-        }
-        return render(request, "company/company_profile_edit.html",context)
+    context={
+        'profile':profile
+    }
+    return render(request, "company/company_profile_edit.html",context)
         
 
 

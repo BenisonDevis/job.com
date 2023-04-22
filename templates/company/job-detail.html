@@ -165,43 +165,43 @@
         box-shadow: 0 12px 20px 1px rgba(64, 64, 64, .09);
       }
 </style>
-    <div class="container-xxl bg-white p-0">
+    <div class="container-xxl  p-0">
 
         <!-- Job Detail Start -->
         <div  class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div style="background-color: rgb(225, 211, 236);padding: 5px;box-shadow: 0px 0px 5px rgb(30, 0, 255);" class="container">
+            <div  class="container">
                 <div class="row gy-5 gx-4">
-                    <div class="col-lg-8">
-                        <div style="background-color: rgb(213, 235, 242);padding: 5px;box-shadow: 0px 0px 5px rgb(30, 0, 255);"  class="d-flex align-items-center mb-5">
+                    <div style="border-radius: 25px; padding: 20px; background-color: black;box-shadow: 0px 0px 10px rgb(191, 9, 237);" class="col-lg-8">
+                        <div style="border-radius: 25px;box-shadow: 0px 0px 5px darkblue;padding: 20px; background-image: url('{% static 'img/jobpost.jpg' %}');background-size: 100% 100%;" class="d-flex align-items-center mb-5">
                             <img class="flex-shrink-0 img-fluid border rounded" src="{{ post.rel_comp_comp.company_logo.url }}" alt="" style="width: 80px; height: 80px;">
-                            <div class="text-start ps-4">
-                                <h3 class="mb-3">{{ post.jobtitle }}</h3>
-                                <h5 class="mb-3">{{ post.rel_comp_comp.company_name }}</h5>
-                                <a href="{% url 'job_status' post.id %}"><button>{% if post.status %} Open {% else %} Closed {% endif %} </button></a>
-                                <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ post.location }}</span>
-                                <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{ post.jobtype }}</span>
-                                <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>₹{{ post.price_range }}</span>
+                            <div style="color: white;" class="text-start ps-4">
+                                <h3 style="color: crimson;" class="mb-3">{{ post.jobtitle }}</h3>
+                                <h5 style="color: blue;" class="mb-3">{{ post.rel_comp_comp.company_name }}</h5>
+                                <a href="{% url 'job_status' post.id %}"><button style="background-color: deeppink;padding: 5px;" >{% if post.status %} Open {% else %} Closed {% endif %} </button></a>
+                                <span class=" me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ post.location }}</span>
+                                <span class=" me-3"><i class="far fa-clock text-primary me-2"></i>{{ post.jobtype }}</span>
+                                <span class=" me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>₹{{ post.price_range }}</span>
                             </div>
                             <span>{{ post.category }}</span>
                         </div>
 
-                        <div class="mb-5">
-                            <h4 class="mb-3">Job description</h4>
+                        <div style="color: white;" class="mb-5">
+                            <h4 style="color: aqua;" class="mb-3">Job description</h4>
                             <p>{{ post.job_discription }}</p>
-                            <h4 class="mb-3">Responsibility</h4>
+                            <h4 style="color: aqua;" class="mb-3">Responsibility</h4>
                             <p>{{ post.required }}</p>
-                            <h4 class="mb-3">Qualifications</h4>
+                            <h4 style="color: aqua;" class="mb-3">Qualifications</h4>
                             <p>{{ post.education }}</p>
                         </div>
         
                         <div class="">
                             <section class="container py-5">
-                                <h2 class="h4 block-title text-center mt-2">Applied Employees</h2>
+                                <h2 style="color: aqua;" class="h4 block-title text-center mt-2">Applied Employees</h2>
                                 <div class="row pt-3">
                                     <!-- Author-->
                                     {% for apl in apl %}
-                                    <div style="box-shadow: 0px 0px 5px crimson;background-color: aliceblue; margin-left: 15px ;" class="col-lg-3 col-sm-6 mb-30 pb-2">
-                                        <div class="team-card-style-3 mx-auto">
+                                    <div style=" box-shadow: 0px 0px 5px crimson;background-color: rgb(32, 126, 208); margin-left: 15px ;" class="col-lg-3 col-sm-6  pb-2">
+                                        <div  class="team-card-style-3 mx-auto">
                                             <div class="team-thumb"><img src="{{ apl.rel_empl_post.profile_img.url }}" alt="Author Picture">
                                             </div>
                                             <h4 class="team-name">{{ apl.rel_profile.first_name }} {{ apl.rel_profile.last_name }}</h4>
@@ -230,17 +230,17 @@
                     </div>
         
                     <div class="col-lg-4">
-                        <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
-                            <h4 class="mb-4">Job Summery</h4>
-                            <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: {{ post.posttime }}</p>
+                        <div style="border-radius: 25px;color: white;:box-shadow: 0px 0px 5px darkblue;background-image: url('{% static 'img/detjob1.jpg' %}');background-size: 100% 100%;" class="  p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                          <h4 style="color: aqua;" class="mb-4">Job Summery</h4>
+                            <p><i class="fa fa-angle-right text-primary me-2"></i>Published: {{ post.posttime }}</p>
                             <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: {{ post.vacancy }}</p>
                             <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: {{ post.vacancy }} </p>
                             <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: ₹{{ post.price_range }}</p>
                             <p><i class="fa fa-angle-right text-primary me-2"></i>Location: {{ post.location }}</p>
                             <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Date Line: {{ post.last_date }}</p>
                         </div>
-                        <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
-                            <h4 class="mb-4">Company Detail</h4>
+                        <div style="border-radius: 25px;color: white;box-shadow: 0px 0px 5px darkblue;background-image: url('{% static 'img/detjob2.jpg' %}');background-size: 100% 100%;"  class="  p-5 wow slideInUp" data-wow-delay="0.1s">
+                          <h4 style="color: aqua;" class="mb-4">Company Detail</h4>
                             <p class="m-0">{{ post.rel_comp_comp.about_us_discpt }}</p>
                         </div>
                     </div>

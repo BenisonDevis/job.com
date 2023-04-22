@@ -2,7 +2,9 @@
 
 
 {% block content %}
-<h4 style="text-align: center;">Applied Jobs</h4>
+{% load static %}
+<br>
+<h4 style="text-align: center;color: white;">Applied Jobs</h4>
 <br>
 <div class="container">
 
@@ -10,14 +12,14 @@
 {% for post in apl %}
         
                         
-    <div style="box-shadow: 0px 0px 10px darkblue;background-color: aliceblue;" class="job-item p-4 mb-4">
+    <div style="border-radius: 10px;color: white;box-shadow: 0px 0px 15px rgb(7, 7, 12);padding: 50px;background-image: url('{% static 'img/1234list.jpg' %}');background-size: 100% 100%;" class="job-item  mb-4">
         
         
         <div class="row g-4">
             <div class="col-sm-12 col-md-8 d-flex align-items-center">
                 <img class="flex-shrink-0 img-fluid border rounded" src="{{post.rel_post.rel_comp_comp.company_logo.url}}" alt="" style="width: 80px; height: 80px;">
                 <div class="text-start ps-4">
-                    <h5 class="mb-3">{{ post.rel_post.jobtitle }}</h5>
+                    <h5 style="color: white;" class="mb-3">{{ post.rel_post.jobtitle }}</h5>
                     <h6>{{post.rel_comp_comp}}</h6>
                     <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ post.rel_post.location }}</span>
                     <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{ post.rel_post.jobtype }}</span>
