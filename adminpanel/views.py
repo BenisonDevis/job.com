@@ -2,20 +2,31 @@ from django.shortcuts import render,redirect
 from account.models import Employee,Company
 from company.models import CompanyProfile
 from employee.models import ProfileEdit
+from .decorators import admin_login_required
+
 # Create your views here.
 
+
+@admin_login_required
 def admin_homepage(request):
     emp = Employee.employee.all()
     emplen=len(emp)
     comp = Company.company.all()
     complen = len(comp)
+    perm =Company.company.filter(
+        is_active =False
+    )
+    permlen = len(perm)
     context = {
         'emplen' : emplen,
-        'complen' : complen
-    }
+        'complen' : complen,
+        'permlen' : permlen
+    }  
     return render(request,'admin/admin_home.html',context)
+    
 
 
+@admin_login_required
 def admin_employees_details(request):
     emp = Employee.employee.all()
     
@@ -27,8 +38,10 @@ def admin_employees_details(request):
         'emp_prof' : emp_prof
     }
     return render(request,'admin/admin_employess.html',context)
+    
 
 
+@admin_login_required
 def admin_companies_details(request):
     comp = Company.company.all()
     
@@ -39,30 +52,37 @@ def admin_companies_details(request):
     context = {
         'comp' : comp,
         'comp_prof' : comp_prof
-    }
+    } 
     return render(request,'admin/admin_companies.html',context)
+    
 
 
+@admin_login_required
 def delete_account_company(request,id):
     comp = Company.company.get(id=id)
     comp.delete()
     return redirect('admin_companies_details')
 
 
+@admin_login_required
 def delete_account_employee(request,id):
     emp = Employee.employee.get(id=id)
     emp.delete()
     return redirect('admin_employees_details')
 
+
+@admin_login_required
 def login_permissions(request):
     comp = Company.company.all()
     
     context = {
         'comp' : comp
-    }
-    
+    } 
     return render(request,'admin/login_permission.html',context)
+
     
+
+@admin_login_required  
 def permission_done(request,id):
     comp = Company.objects.get(id=id)
 
@@ -84,7 +104,10 @@ def permission_done(request,id):
         'comp' : comp
     }
     return render(request,'admin/login_permission.html', context)
+    
 
+
+@admin_login_required
 def approve_sts(request,id):
     comp = Company.objects.get(id=id)
     print(comp.id)

@@ -263,11 +263,11 @@
 <div class="container">
 <div class="row">
     <div class="col-lg-4 col-xl-4">
-        <div class="card-box text-center bg-light " style="box-shadow: 0px 0px 10px black ;">
+        <div class="card-box text-center bg-light " style="box-shadow: 0px 0px 10px black ;background-image: url('{% static 'img/prolh.jpg' %}');">
             <img src="{{ apl.rel_empl_post.profile_img.url }}" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
 
-            <h4 class="mb-0">{{ apl.rel_profile.first_name }} {{ apl.rel_profile.last_name }}</h4>
-            <p class="text-muted">{{ apl.rel_empl_post.profile_title }}</p>
+            <h4 style="color: rgba(255, 255, 255, 0.758);" class="mb-0">{{ apl.rel_profile.first_name }} {{ apl.rel_profile.last_name }}</h4>
+            <p style="color: rgba(255, 255, 255, 0.758);" >{{ apl.rel_empl_post.profile_title }}</p>
 
             
             <form method="post">
@@ -278,26 +278,26 @@
                   <option value="Selected">Selected</option>
                   <option value="Rejected">Rejected</option>
                 </select>
-                <button>Submit</button>
+                <button  style="border-radius: 10px;background-color: #6559cc;" >Submit</button>
               </form>
             <a href="{% url 'resume_view' apl.id %}"><button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Resume</button></a>
 
-            <div class="text-left mt-3">
-                <h4 class="font-13 text-uppercase">About Me :</h4>
-                <p class="text-muted font-13 mb-3">
+            <div style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="text-left mt-3">
+                <h4 style="color: rgba(255, 255, 255, 0.758);" class="font-13 text-uppercase">About Me :</h4>
+                <p class=" font-13 mb-3">
                     {{ apl.rel_empl_post.bio }}
                 </p>
-                <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">{{ apl.rel_profile.first_name }} {{ apl.rel_profile.last_name }}</span></p>
+                <p class=" mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">{{ apl.rel_profile.first_name }} {{ apl.rel_profile.last_name }}</span></p>
                 
-                <p class="text-muted mb-1 font-13"><strong>gender :</strong> <span class="ml-2">{{ apl.rel_empl_post.gender }}</span></p>
+                <p class="mb-1 font-13"><strong>gender :</strong> <span class="ml-2">{{ apl.rel_empl_post.gender }}</span></p>
 
-                <p class="text-muted mb-2 font-13"><strong>Working Status :</strong><span class="ml-2">{{ apl.rel_empl_post.working_sts }}</span></p>
+                <p class="mb-2 font-13"><strong>Working Status :</strong><span class="ml-2">{{ apl.rel_empl_post.working_sts }}</span></p>
                 
-                <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ml-2">{{ apl.rel_empl_post.mobile_no }}</span></p>
+                <p class="mb-2 font-13"><strong>Mobile :</strong><span class="ml-2">{{ apl.rel_empl_post.mobile_no }}</span></p>
 
-                <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">{{ apl.rel_profile.emai }}</span></p>
+                <p class="mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">{{ apl.rel_profile.emai }}</span></p>
 
-                <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ml-2">{{ apl.rel_empl_post.location }}</span></p>
+                <p class="mb-1 font-13"><strong>Location :</strong> <span class="ml-2">{{ apl.rel_empl_post.location }}</span></p>
             
 
             </div>
@@ -320,14 +320,14 @@
 
         <!-- Start Add skill  -->
 
-        <div class="card-box bg-light " style="box-shadow: 0px 0px 10px black ;">
+        <div class="card-box bg-light " style="box-shadow: 0px 0px 10px black ;background-image: url('{% static 'img/newprof.png' %}');background-size: 100% 100%;">
            
-            <h4 class="header-title">Skills</h4>
+            <h4 style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="header-title">Skills</h4>
            
             
             {% for addskl in skl %} 
                 <div class="pt-1">
-                    <h6 class="text-uppercase mt-0">{{addskl.skill}} <span class="float-right">{{addskl.percentage}}%</span></h6>
+                    <h6 style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="text-uppercase mt-0">{{addskl.skill}} <span class="float-right">{{addskl.percentage}}%</span></h6>
                     <div class="progress progress-sm m-0">
                         <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="{{addskl.percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{addskl.percentage}}%">
                             <span class="sr-only">{{addskl.percentage}}% Complete</span>
@@ -342,47 +342,47 @@
     <!-- End Add skill  -->
 
     <div class="col-lg-8 col-xl-8">
-        <div class="card-box" style="box-shadow: 0px 0px 10px blue;">
+        <div class="card-box" style="box-shadow: 0px 0px 10px blue;background-image: url('{% static 'img/pronewc.jpg' %}');background-size: 100% 100%;">
 
-            <div class="tab-content bg-light" style="box-shadow: 0px 0px 10px rgb(13, 13, 13);">
+            <div class="tab-content bg-light" style="box-shadow: 0px 0px 10px rgb(13, 13, 13);background-image: url('{% static 'img/newprof.png' %}');background-size: 100% 100%;">
                 
                 <div class="tab-pane show active" id="about-me">
                    
-                    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-briefcase mr-1"></i>Experience</h5>
+                    <h5 style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="mb-4 text-uppercase"><i class="mdi mdi-briefcase mr-1"></i>Experience</h5>
 
                     <ul class="list-unstyled timeline-sm">
                        
                         {% for addexp in exp %}
-                            <li class="timeline-sm-item">
+                            <li style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="timeline-sm-item">
                                 <span class="timeline-sm-date">{{ addexp.date }}</span>
-                                <h5 class="mt-0 mb-1">{{ addexp.job_role }}</h5>
+                                <h5 style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="mt-0 mb-1">{{ addexp.job_role }}</h5>
                                 <p>{{ addexp.company_name }}</p>
-                                <p class="text-muted mt-2">{{ addexp.job_dicription }}</p>
+                                <p class=" mt-2">{{ addexp.job_dicription }}</p>
                             </li>
                         {% endfor %}    
                         
                     </ul>
                     <hr style="border-top: 10px solid #2174e8;">
                    
-                    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-library"></i>
+                    <h5 style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="mb-4 text-uppercase"><i class="mdi mdi-library"></i>
                         
                         Education</h5>
 
                     <ul class="list-unstyled timeline-sm">
                 
                         {% for addedu in edu %}
-                            <li class="timeline-sm-item">
+                            <li style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="timeline-sm-item">
                                 <span class="timeline-sm-date">{{ addedu.date }}</span>
-                                <h5 class="mt-0 mb-1">{{ addedu.qualification }}</h5>
+                                <h5 style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="mt-0 mb-1">{{ addedu.qualification }}</h5>
                                 <p>{{ addedu.school }}</p>
-                                <p class="text-muted mt-2">{{ addedu.shor_dicription }}</p>
+                                <p class=" mt-2">{{ addedu.shor_dicription }}</p>
                             </li>
                         {% endfor %}    
                         
                     </ul>
                     <hr style="border-top: 10px solid #2174e8;">
                     
-                    <h5 class="mb-3 mt-4 text-uppercase"><i class="mdi mdi-cards-variant mr-1"></i>
+                    <h5 style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="mb-3 mt-4 text-uppercase"><i class="mdi mdi-cards-variant mr-1"></i>
                         Projects
                     </h5>
 
@@ -397,11 +397,11 @@
                             </li>
                         {% else %}
                         {% for addpro in pro %}
-                            <li class="timeline-sm-item">
+                            <li style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="timeline-sm-item">
                                 <span class="timeline-sm-date">{{ addedu }}</span>
-                                <h5 class="mt-0 mb-1">{{ addpro.pro_name }}</h5>
+                                <h5 style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="mt-0 mb-1">{{ addpro.pro_name }}</h5>
                                 <p>{{ addpro.domine }}</p>
-                                <p class="text-muted mt-2">{{ addpro.shor_dicription }}</p>
+                                <p class=" mt-2">{{ addpro.shor_dicription }}</p>
                             </li>
                         {% endfor %}    
                         {% endif %}

@@ -1,7 +1,11 @@
+import random
 from django.shortcuts import render, redirect
 from .models import Account, Employee, Company
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.core.mail import send_mail
+from .models import UserOTP
+
 
 
 # Create your views here.
@@ -125,3 +129,69 @@ def user_logout(request):
     return redirect(
         "user_login",
     )
+
+
+def employee_forgot_password(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        
+        users = Account.objects.filter(username = username).first()
+        
+        if users:
+            otp = random.randint(1000,9999)
+            sub = 'Password reset'
+            message = f'Here is your One time password(OTP)-{otp}'
+            from_email = 'benisondevis.py@gmail.com'
+            to_email = [users.email]
+            
+            user_otps = UserOTP.objects.filter(user = users)
+            if user_otps :
+                user_otp = user_otps.first()
+                user_otp.otp = otp
+                user_otp.save()
+            else :
+                UserOTP.objects.create(
+                    otp = otp,
+                    user = users
+                )
+            
+            send_mail(
+                subject = sub,
+                message = message,
+                from_email = from_email,
+                recipient_list = to_email,
+                fail_silently = False
+            )
+            messages.success(request,'Successfuly OTP send to your registered Email Address')
+            return redirect('verify_otp',users.id)
+        else:
+            messages.error(request,"username does't exit")        
+    return render(request,'accounts/empl_forgot.html')
+
+
+def verify_otp(request,id):
+    user = Account.objects.get(id = id)
+    if request.method =='POST':
+        submitted_otp = request.POST.get('otp')
+        user_otp = UserOTP.objects.filter(user = user).first()
+        
+        if submitted_otp == user_otp.otp:
+            messages.success(request,'OTP verified')
+            return redirect('password_reset',user.id)
+        messages.error(request,'Invalid otp')
+    return render(request,'accounts/verify_otp.html')
+
+
+def password_reset(request,id):
+    user = Account.objects.get(id = id)
+    if request.method == 'POST':
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        
+        if password1 == password2:
+            user.set_password(password2)
+            user.save()
+            messages.success(request,'password changed successfuly')
+            return redirect('user_login')
+        messages.error(request,'password does not match')
+    return render(request,'accounts/reset.html')

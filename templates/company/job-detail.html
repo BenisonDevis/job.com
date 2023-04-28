@@ -174,10 +174,10 @@
                     <div style="border-radius: 25px; padding: 20px; background-color: black;box-shadow: 0px 0px 10px rgb(191, 9, 237);" class="col-lg-8">
                         <div style="border-radius: 25px;box-shadow: 0px 0px 5px darkblue;padding: 20px; background-image: url('{% static 'img/jobpost.jpg' %}');background-size: 100% 100%;" class="d-flex align-items-center mb-5">
                             <img class="flex-shrink-0 img-fluid border rounded" src="{{ post.rel_comp_comp.company_logo.url }}" alt="" style="width: 80px; height: 80px;">
-                            <div style="color: white;" class="text-start ps-4">
-                                <h3 style="color: crimson;" class="mb-3">{{ post.jobtitle }}</h3>
-                                <h5 style="color: blue;" class="mb-3">{{ post.rel_comp_comp.company_name }}</h5>
-                                <a href="{% url 'job_status' post.id %}"><button style="background-color: deeppink;padding: 5px;" >{% if post.status %} Open {% else %} Closed {% endif %} </button></a>
+                            <div style="color: rgba(255, 255, 255, 0.758);" class="text-start ps-4">
+                                <h3 style="color: rgb(215, 107, 129);" class="mb-3">{{ post.jobtitle }}</h3>
+                                <h5 style="color: rgb(98, 98, 196);" class="mb-3">{{ post.rel_comp_comp.company_name }}</h5>
+                                <a href="{% url 'job_status' post.id %}"><button style="border-radius: 10px;background-color: deeppink;padding: 5px;" >{% if post.status %} Open {% else %} Closed {% endif %} </button></a>
                                 <span class=" me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ post.location }}</span>
                                 <span class=" me-3"><i class="far fa-clock text-primary me-2"></i>{{ post.jobtype }}</span>
                                 <span class=" me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>₹{{ post.price_range }}</span>
@@ -185,18 +185,18 @@
                             <span>{{ post.category }}</span>
                         </div>
 
-                        <div style="color: white;" class="mb-5">
-                            <h4 style="color: aqua;" class="mb-3">Job description</h4>
+                        <div style="color: rgba(255, 255, 255, 0.758);" class="mb-5">
+                            <h4 style="color: rgb(113, 206, 206);" class="mb-3">Job description</h4>
                             <p>{{ post.job_discription }}</p>
-                            <h4 style="color: aqua;" class="mb-3">Responsibility</h4>
+                            <h4 style="color: rgb(113, 206, 206);" class="mb-3">Responsibility</h4>
                             <p>{{ post.required }}</p>
-                            <h4 style="color: aqua;" class="mb-3">Qualifications</h4>
+                            <h4 style="color: rgb(113, 206, 206);" class="mb-3">Qualifications</h4>
                             <p>{{ post.education }}</p>
                         </div>
         
                         <div class="">
                             <section class="container py-5">
-                                <h2 style="color: aqua;" class="h4 block-title text-center mt-2">Applied Employees</h2>
+                                <h2 style="color: rgb(113, 206, 206);" class="h4 block-title text-center mt-2">Applied Employees</h2>
                                 <div class="row pt-3">
                                     <!-- Author-->
                                     {% for apl in apl %}
@@ -209,7 +209,7 @@
                                             <a class="team-contact-link" href="{% url 'applied_employee_profile' apl.id %}">Profile Details</a>
                                             <div class="team-social-bar-wrap">
                                                 <div class="team-social-bar">
-                                                  <button>{{ apl.selected }}</button>
+                                                  <button style="border-radius: 5px;background-color: rgb(159, 159, 239);" >{{ apl.selected }}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -230,8 +230,8 @@
                     </div>
         
                     <div class="col-lg-4">
-                        <div style="border-radius: 25px;color: white;:box-shadow: 0px 0px 5px darkblue;background-image: url('{% static 'img/detjob1.jpg' %}');background-size: 100% 100%;" class="  p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
-                          <h4 style="color: aqua;" class="mb-4">Job Summery</h4>
+                        <div style="border-radius: 25px;color: rgba(255, 255, 255, 0.758);:box-shadow: 0px 0px 5px darkblue;background-image: url('{% static 'img/detjob1.jpg' %}');background-size: 100% 100%;" class="  p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                          <h4 style="color: rgb(113, 206, 206);" class="mb-4">Job Summery</h4>
                             <p><i class="fa fa-angle-right text-primary me-2"></i>Published: {{ post.posttime }}</p>
                             <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: {{ post.vacancy }}</p>
                             <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: {{ post.vacancy }} </p>
@@ -239,8 +239,8 @@
                             <p><i class="fa fa-angle-right text-primary me-2"></i>Location: {{ post.location }}</p>
                             <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Date Line: {{ post.last_date }}</p>
                         </div>
-                        <div style="border-radius: 25px;color: white;box-shadow: 0px 0px 5px darkblue;background-image: url('{% static 'img/detjob2.jpg' %}');background-size: 100% 100%;"  class="  p-5 wow slideInUp" data-wow-delay="0.1s">
-                          <h4 style="color: aqua;" class="mb-4">Company Detail</h4>
+                        <div style="border-radius: 25px;color: rgba(255, 255, 255, 0.758);box-shadow: 0px 0px 5px darkblue;background-image: url('{% static 'img/detjob2.jpg' %}');background-size: 100% 100%;"  class="  p-5 wow slideInUp" data-wow-delay="0.1s">
+                          <h4 style="color: rgb(113, 206, 206);" class="mb-4">Company Detail</h4>
                             <p class="m-0">{{ post.rel_comp_comp.about_us_discpt }}</p>
                         </div>
                     </div>

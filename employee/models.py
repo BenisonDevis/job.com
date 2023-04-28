@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import Employee
+from account.models import Employee,Company
 from company.models import JobPost
 
 # Create your models here.
@@ -68,7 +68,7 @@ class ApplyJob(models.Model):
     )
     apply_status = models.BooleanField(default=True)
     rel_profile = models.ForeignKey(
-        Employee, on_delete=models.CASCADE, null=True, blank=True
+        Employee, on_delete=models.CASCADE, null=True, blank=True,related_name='applied_jobs'
     )
 
     rel_post = models.ForeignKey(
@@ -80,3 +80,5 @@ class ApplyJob(models.Model):
     selected = models.CharField(
         max_length=30, choices=sel, default="Waiting for Review"
     )
+    company_relation = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='apply_jobs',null=True, blank=True)
+   

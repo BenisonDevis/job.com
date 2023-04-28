@@ -54,3 +54,9 @@ class Company(Account):
 
     def welcome(self):
         return "Only for Companys"
+
+
+class UserOTP(models.Model):
+    otp = models.CharField(max_length=10)
+    user = models.OneToOneField(Account,on_delete=models.CASCADE)
+    

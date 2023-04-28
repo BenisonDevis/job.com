@@ -13,5 +13,4 @@ urlpatterns = [
     path('siteadmin/<int:id>/permissions/done/',permission_done,name="permission_done"),
     
     path('siteadmin/<int:id>/permissions/sts/',approve_sts,name="approve_sts"),
-     
 ]

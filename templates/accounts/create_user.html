@@ -90,6 +90,9 @@
                             <!-- Register buttons -->
                 
                         </form>
+                        {% for msg in messages %}
+                            <br><span style="color:{% if msg.tags == 'success' %}green{% else %}red{% endif %}">{{ msg }}</span><br>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

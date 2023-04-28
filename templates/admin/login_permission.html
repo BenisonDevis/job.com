@@ -200,12 +200,12 @@
 <br>
 <br>
 <div class="container">
-    <h2 style="text-align: center;">Company Permission</h2>
+    <h2 style="color:white ; text-align: center;">Company Permission</h2>
 <div class="col-md-12">
     
     {% for comp in comp %}
     <div class="card b-1 hover-shadow mb-20">
-        <div class="media card-body">
+        <div style="color: white; background-image: url('{% static 'img/pronewc.jpg' %}');background-size: 100% 100%;" class="media card-body">
             <!-- <div class="media-left pr-12">
                 <img class="avatar avatar-xl no-radius" src="{{ comp.company_logo.url }}" alt="...">
             </div> -->
@@ -213,52 +213,25 @@
                 <div class="mb-2">
                     <span class="fs-20 pr-16">{{ comp.first_name }} </span>
                 </div>
-                <span class="text-fade"><i class="fa fa-envelope-o pr-1"></i> {{ comp.email }}</span>
+                <span ><i class="fa fa-envelope-o pr-1"></i> {{ comp.email }}</span><br>
+                <span ><strong>Username:</strong> {{ comp.username }}</span>
             </div>
             <div style="margin-left: 650px;">
                 <!-- <p class="fs-14 text-fade mb-12"><i class="fa fa-map-marker pr-1"></i> {{ comp.company_location }}</p> -->
                 <!-- <span class="text-fade"><i class="fa fa-envelope-o pr-1"></i> {{ comp.rel_comp.email }}</span> -->
             </div>
         </div>
-        <footer class="card-footer flexbox align-items-center">
+        <footer style="background-color: crimson;" class="card-footer flexbox align-items-center">
             <div>
-                <strong>Username:</strong>
-                <span>{{ comp.username }}</span>
+                <strong>Date of joined:</strong>
+                <span>{{ comp.date_joined }}</span>
             </div>
             <div class="card-hover-show">
                 <!-- <a class="btn btn-xs fs-10 btn-bold btn-info" href="#">Download CV</a> -->
-                {{ comp.is_active }}
-                <a href="{% url 'approve_sts' comp.id %}"><button>{% if comp.is_active %}approve{% else %} not approved{% endif %}</button></a>
-                <!-- Button trigger modal -->
-                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Aprove</button> -->
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="{% url 'permission_done' comp.id %}" method="post">
-                                    {% csrf_token %}
-                                    {{comp.id}}
-                                    <label for="">Company permission for Login</label>
-                                    <input name="select" type="checkbox" value="on" {% if post.is_active %}checked{% endif %}>
-                                    <button>Permission</button>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                <!-- <a class="btn btn-xs fs-10 btn-bold btn-warning" href="">Delete</a> -->
+                
+                <a href="{% url 'approve_sts' comp.id %}"><button style="background-color: chartreuse;border-radius: 10px;" >{% if comp.is_active %}approve{% else %} not approved{% endif %}</button></a>
+               
+                    
             </div>
         </footer>
     </div>

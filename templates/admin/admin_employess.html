@@ -203,7 +203,7 @@
     
     {% for emp in emp_prof %}
     <div class="card b-1 hover-shadow mb-20">
-        <div class="media card-body">
+        <div style="color: white; background-image: url('{% static 'img/pronewc.jpg' %}');background-size: 100% 100%;" class="media card-body">
             <div class="media-left pr-12">
                 <img class="avatar avatar-xl no-radius" src="{{emp.profile_img.url}}" alt="...">
             </div>
@@ -214,18 +214,16 @@
                 <small class="fs-16 fw-300 ls-1">{{ emp.profile_title }}</small>
             </div>
             <div style="margin-left: 650px;"">
-                <p class="fs-14 text-fade mb-12"><i class="fa fa-map-marker pr-1"></i>{{ emp.location }} </p>
-                <span class="text-fade"><i class="fa fa-envelope-o pr-1"></i>{{ emp.rel_profile.email }}</span>
+                <p class="fs-14  mb-12"><i class="fa fa-map-marker pr-1"></i>{{ emp.location }} </p>
+                <span ><i class="fa fa-envelope-o pr-1"></i>{{ emp.rel_profile.email }}</span>
             </div>
         </div>
-        <footer class="card-footer flexbox align-items-center">
+        <footer style="background-color: darkmagenta;" class="card-footer flexbox align-items-center">
             <div>
                 <strong>Username:</strong>
                 <span>{{ emp.rel_profile.username }}</span>
             </div>
             <div class="card-hover-show">
-                <a class="btn btn-xs fs-10 btn-bold btn-info" href="#">Download CV</a>
-                <a class="btn btn-xs fs-10 btn-bold btn-primary" href="#" data-toggle="modal" data-target="#modal-contact">Contact</a>
                 <a class="btn btn-xs fs-10 btn-bold btn-warning" href="{% url 'delete_account_employee' emp.rel_profile.id  %}">Delete</a>
             </div>
         </footer>

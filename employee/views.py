@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect
 from .models import *
+from account.models import *
 from company.models import JobPost
-from django.http import FileResponse,HttpResponse
+from django.http import HttpResponse
+from .decorators import employee_login_required
 
 
 # Create your views here.
 
-
+@employee_login_required
 def employee_home(
     request,
 ):
@@ -20,13 +22,18 @@ def employee_home(
     elif location:
         post = post.filter(location__icontains=location)
     context = {"post": post}
+     
     return render(request, "employees_pages/emp_home.html", context)
 
+    
 
+@employee_login_required
 def job_details(request, id):
     post = JobPost.objects.get(id=id)
     user = request.user
+    comp = post.rel_comp_job
     prof = ProfileEdit.objects.filter(rel_profile=user).first()
+   
     if request.method == "POST":
         apl = request.POST.get("apply")
 
@@ -35,7 +42,8 @@ def job_details(request, id):
                 apply_status=True, 
                 rel_profile=user, 
                 rel_post=post, 
-                rel_empl_post=prof
+                rel_empl_post=prof,
+                company_relation = comp
             )
 
             return redirect("job_details", post.id)
@@ -45,16 +53,18 @@ def job_details(request, id):
                 rel_profile=request.user,
                 rel_post=post,
                 rel_empl_post=prof,
+                company_relation = comp
             )
 
             return redirect("job_details", post.id)
 
     apl = ApplyJob.objects.filter(rel_post=post).values_list("rel_profile", flat=True)
-    print(apl)
+    
     context = {"post": post, "apl": apl}
     return render(request, "employees_pages/job_details.html", context)
 
 
+@employee_login_required
 def apply_sts(request, id):
     post = JobPost.objects.get(id=id)
     apl = ApplyJob.objects.filter(rel_post=post).first()
@@ -63,7 +73,7 @@ def apply_sts(request, id):
 
     return redirect("job_details", post.id)
 
-
+@employee_login_required
 def employee_profile(request):
     emp = request.user
 
@@ -80,10 +90,12 @@ def employee_profile(request):
         "pro": addpro,
         "skl": addskl,
         "prof": addprof,
-    }
+    } 
     return render(request, "employees_pages/emp_profile.html", context)
 
+    
 
+@employee_login_required
 def employee_profile_edit(request):
     emp = request.user
     profile = ProfileEdit.objects.filter(
@@ -114,7 +126,10 @@ def employee_profile_edit(request):
                 rel_profile=emp,
             )
             return redirect("employee_profile")
+  
         return render(request, "employees_pages/emp_edit_profile.html")
+
+        
     elif profile:
         
         if request.method == "POST":
@@ -144,10 +159,13 @@ def employee_profile_edit(request):
             return redirect("employee_profile")
         context={
             'profile':profile
-        }
+        }  
         return render(request, "employees_pages/emp_edit_profile.html",context)
+    
+        
+        
 
-
+@employee_login_required
 def add_experiences(request):
     emp = request.user
     if request.method == "POST":
@@ -164,10 +182,12 @@ def add_experiences(request):
             rel_experience=emp,
         )
         return redirect("employee_profile")
-
     return render(request, "employees_pages/emp_profile.html")
 
 
+    
+
+@employee_login_required
 def add_educations(request):
     emp = request.user
     if request.method == "POST":
@@ -186,7 +206,9 @@ def add_educations(request):
         return redirect("employee_profile")
     return render(request, "employees_pages/emp_profile.html")
 
+    
 
+@employee_login_required
 def add_project(request):
     emp = request.user
     if request.method == "POST":
@@ -200,7 +222,9 @@ def add_project(request):
         return redirect("employee_profile")
     return render(request, "employees_pages/emp_profile.html")
 
+    
 
+@employee_login_required
 def add_skill(request):
     emp = request.user
     if request.method == "POST":
@@ -210,20 +234,22 @@ def add_skill(request):
         AddSkill.objects.create(skill=skill, percentage=perc, rel_skill=emp)
         return redirect(
             "employee_profile",
-        )
-
+        ) 
     return render(request, "employees_pages/emp_profile.html")
 
+    
 
+@employee_login_required
 def employee_appliedjob(request):
     user = request.user
     apl = ApplyJob.objects.filter(rel_profile=user)
 
-    context = {"apl": apl}
-
+    context = {"apl": apl}  
     return render(request, "employees_pages/applied_jobs.html", context)
+ 
+    
 
-
+@employee_login_required
 def resume_view(request):
     emp = request.user
     profile = ProfileEdit.objects.filter(
