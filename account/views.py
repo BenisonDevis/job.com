@@ -151,7 +151,7 @@ def user_login(request):
             else:
                 messages.error(request, "invalid username or password")
 
-    return render(request, "accounts/index.html.html")
+    return render(request, "accounts/index.html")
 
 
 def user_logout(request):
