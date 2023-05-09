@@ -280,7 +280,7 @@
             <a href="{% url 'employee_profile_edit' %}"><button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Edit</button></a>
             
             {% if prof.resume %}
-                <a href="{% url 'resume_view' %}"><button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Resume</button></a>
+                <a href="{{ prof.resume.url }}"><button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Resume</button></a>
             {% else %}
                 <a href="{% url 'employee_profile_edit' %}"><button class="btn btn-danger btn-xs waves-effect mb-2 waves-light" >Upload Resume</button></a>   
             {% endif %}

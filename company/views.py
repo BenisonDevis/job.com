@@ -90,7 +90,8 @@ def company_profile_edit(request):
             profile.company_name=company_name
             if company_logo:
                 profile.company_logo=company_logo
-            profile.company_prf_bg=cover_image
+            if cover_image:
+                profile.company_prf_bg=cover_image
             profile.company_slogam=slogan
             profile.company_location=location
             if about_img:
@@ -232,13 +233,11 @@ def applied_employee_profile(request, id):
     
 
 
-@company_login_required
-def resume_view(request,id):
-    apl = ApplyJob.objects.get(id=id)
-    
-    with open(apl.rel_empl_post.resume.path, 'rb') as f:
-            response = HttpResponse(f.read(), content_type='application/pdf')
-            response['Content-Disposition'] = f'inline; filename="{apl.rel_empl_post.resume}"'
-            return response
-        
+def status_change(request, id):
+    application = ApplyJob.objects.get(id=id)
+    if request.method == 'POST':
+        status = request.POST.get(f'status_{id}')
+        application.selected = status
+        application.save()
+        return redirect('details_job', application.rel_post.id)
         

@@ -4,6 +4,10 @@
 {% block content %}
 {% load static %}
 <style>
+    npm install chart.js --save
+</style>
+
+<style>
     .order-card {
         color: #fff;
     }
@@ -82,7 +86,7 @@
                 </div>
             </div>
         
-        <div class="col-md-4 col-xl-6">
+        <div class="col-md-4 col-xl-4">
             <div class="card bg-c-yellow order-card">
                 <a href="{% url 'login_permissions' %}">
                     <div class="card-block">
@@ -94,17 +98,73 @@
             </div>
         </div>
         
-        <!-- <div class="col-md-4 col-xl-3">
-            <div class="card bg-c-pink order-card">
-                <div class="card-block">
-                    <h6 class="m-b-20">Orders Received</h6>
-                    <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>486</span></h2>
-                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
-                </div>
-            </div>
-        </div> -->
+        <div  class="col-md-4 col-xl-8">
+            
+            <canvas  id="myChart"></canvas>
+          </div>
+          
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          
+          <script>
+            var monthlyCountData = [
+                {% for month in monthly_count %}
+                    {
+                        
+                        count: {{ month.count }}
+                },
+                {% endfor %}
+            ];
+            const data = (Object.values(monthlyCountData));
+            const counts = [];
+            for (let i = 0; i < data.length; i++) {
+                counts.push(data[i].count);
+              }
+            console.log(counts)
+
+            const ctx = document.getElementById('myChart');
+            Chart.defaults.color = 'white';
+            Chart.defaults.borderColor = 'rgba(0, 0, 0, 0.3)';
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['jan', 'feb', 'mar', 'apr', 'may', 'jun','july','aug','sep','oct','nov','des'],
+                datasets: [{
+                  label: '# number of register',
+                  data: counts,
+                  backgroundColor: [
+      'rgba(255,0,0, 0.7)',
+      'rgba(255,165,0, 0.7)',
+      'rgba(255,255,0, 0.7)',
+      'rgba(0,128,0, 0.7)',
+      'rgba(0,0,255, 0.7)',
+      'rgba(153, 102, 255, 0.7)',
+      'rgba(201, 203, 207, 0.7)',
+      'rgba(255, 205, 86, 0.7)',
+      'rgba(75, 192, 192, 0.7)',
+      'rgba(54, 162, 235, 0.7)',
+      'rgba(153, 102, 255, 0.7)',
+      'rgba(201, 203, 207, 0.7)',
+    ],
+                  borderWidth: 1
+                }]
+                
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+        
 	</div>
 </div>
+
+
+
+    
 
 {% endblock content %}
     

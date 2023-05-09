@@ -9,5 +9,6 @@ urlpatterns = [
     path("company/job/<int:id>/details/", details_job, name="details_job"),
     path("company/job/<int:id>/status/", job_status, name="job_status"),
     path( "company/applied/<int:id>/user/", applied_employee_profile, name="applied_employee_profile"),
-    path( "company/applied/<int:id>/resume/", resume_view, name="resume_view"),
+    path('emp/<int:id>/', status_change, name='empl_status_change')
 ]
+ 

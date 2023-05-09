@@ -1,8 +1,13 @@
 from django.shortcuts import render,redirect
-from account.models import Employee,Company
+from account.models import *
 from company.models import CompanyProfile
 from employee.models import ProfileEdit
 from .decorators import admin_login_required
+
+from django.db.models.functions import TruncMonth
+from django.db.models import Count
+
+
 
 # Create your views here.
 
@@ -17,10 +22,17 @@ def admin_homepage(request):
         is_active =False
     )
     permlen = len(perm)
+    monthly_count = Account.objects.annotate(month=TruncMonth('date_joined')) \
+        .values('month') \
+        .annotate(count=Count('id'))
+
+
+    
     context = {
         'emplen' : emplen,
         'complen' : complen,
-        'permlen' : permlen
+        'permlen' : permlen,
+        'monthly_count' : monthly_count,
     }  
     return render(request,'admin/admin_home.html',context)
     

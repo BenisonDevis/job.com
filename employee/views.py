@@ -13,9 +13,9 @@ def employee_home(
     request,
 ):
     post = JobPost.objects.all()
-    category = request.GET.get('category')
-    jobtitle = request.GET.get('jobtitle')
-    location = request.GET.get('location')
+    category = request.GET.get('category', '')
+    jobtitle = request.GET.get('jobtitle', '')
+    location = request.GET.get('location', '')
     if category or jobtitle :
         post = post.filter(category__icontains=category)
         post = post.filter(jobtitle__icontains=jobtitle)
@@ -249,16 +249,7 @@ def employee_appliedjob(request):
  
     
 
-@employee_login_required
-def resume_view(request):
-    emp = request.user
-    profile = ProfileEdit.objects.filter(
-        rel_profile=emp
-    ).first()
-    with open(profile.resume.path, 'rb') as f:
-            response = HttpResponse(f.read(), content_type='application/pdf')
-            response['Content-Disposition'] = f'inline; filename="{profile.resume}"'
-            return response
+
 
 
 

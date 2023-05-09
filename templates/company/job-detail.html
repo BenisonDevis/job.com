@@ -177,7 +177,6 @@
                             <div style="color: rgba(255, 255, 255, 0.758);" class="text-start ps-4">
                                 <h3 style="color: rgb(215, 107, 129);" class="mb-3">{{ post.jobtitle }}</h3>
                                 <h5 style="color: rgb(98, 98, 196);" class="mb-3">{{ post.rel_comp_comp.company_name }}</h5>
-                                <a href="{% url 'job_status' post.id %}"><button style="border-radius: 10px;background-color: deeppink;padding: 5px;" >{% if post.status %} Open {% else %} Closed {% endif %} </button></a>
                                 <span class=" me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ post.location }}</span>
                                 <span class=" me-3"><i class="far fa-clock text-primary me-2"></i>{{ post.jobtype }}</span>
                                 <span class=" me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>₹{{ post.price_range }}</span>
@@ -186,6 +185,8 @@
                         </div>
 
                         <div style="color: rgba(255, 255, 255, 0.758);" class="mb-5">
+                            <a href="{% url 'job_status' post.id %}"><button style="border-radius: 10px;background-color: deeppink;padding: 5px;" >{% if post.status %} Published {% else %} Not Published {% endif %} </button></a>
+
                             <h4 style="color: rgb(113, 206, 206);" class="mb-3">Job description</h4>
                             <p>{{ post.job_discription }}</p>
                             <h4 style="color: rgb(113, 206, 206);" class="mb-3">Responsibility</h4>
@@ -215,6 +216,36 @@
                                         </div>
                                     </div>
                                     {% endfor %}
+                                    
+                                    <!-- <table>
+                                      <tr>
+                                        <th></th>
+                                        <th>Name</th>
+                                        <th>status</th>
+                                        
+                                      </tr>
+                                      {% for apl in apl %}
+                                      <tr>
+                                        <td></td>
+                                        <td>{{ apl.rel_profile.first_name }} {{ apl.rel_profile.last_name }}</td>
+                                        <td>
+                                          <form action="{% url 'empl_status_change' apl.id %}" method="post">
+                                            {% csrf_token %}
+                                          <select name="status_{{ apl.id }}">
+                                            <option value="Waiting for Review">Waiting</option>
+                                            <option value="Your Selected">Waiting</option>
+                                            <option value="Rejected">Waiting</option>
+                                            
+                                          </select>
+                                        
+                                          <input type="submit" value="Save">
+                                        </form>
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
+                                    </table> -->
+                                  
+
                                 </div>
                             </section>
 

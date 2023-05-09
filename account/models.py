@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 
+
 class Account(AbstractUser):
     class Role(models.TextChoices):
         ADMIN = "ADMIN", "Admin"
@@ -13,9 +14,7 @@ class Account(AbstractUser):
     can_login = models.BooleanField(default=True)
     role = models.CharField(max_length=50, choices=Role.choices)
     
-    
     def save(self, *args, **kwargs):
-        print(self.pk)
         if not self.pk:
             self.role = self.base_role
         return super().save(*args, **kwargs)
@@ -30,12 +29,15 @@ class EmployeeManager(BaseUserManager):
 class Employee(Account):
     base_role = Account.Role.USER
     employee = EmployeeManager()
+    # company_profile = models.ForeignKey(CompanyProfile,on_delete=models.CASCADE,null=True,blank=True)
 
     class Meta:
         proxy = True
 
-    def welcome(self):
-        return "Only for users"
+    
+    def full_name(self):
+        return self.first_name + ' ' + self.last_name
+
 
 
 class CompanyManager(BaseUserManager):
@@ -51,9 +53,6 @@ class Company(Account):
 
     class Meta:
         proxy = True
-
-    def welcome(self):
-        return "Only for Companys"
 
 
 class UserOTP(models.Model):

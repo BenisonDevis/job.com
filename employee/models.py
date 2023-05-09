@@ -43,7 +43,9 @@ class AddSkill(models.Model):
 
 
 class ProfileEdit(models.Model):
-    worksts = (("frsh", "I'm Fresher"), ("exp", "I'm Experienced"))
+    worksts = (
+        ("frsh", "I'm Fresher"),
+        ("exp", "I'm Experienced"))
 
     gender = (("M", "Male"), ("F", "Female"), ("O", "Outher"))
 

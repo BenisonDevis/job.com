@@ -272,6 +272,9 @@
             
             <form method="post">
                 {% csrf_token %}
+                <select name="" id="">
+                    <option value="{{apl.selected}}">{{apl.selected}}</option>
+                </select>
                 <select name="select" id="">
                   <option value="">{{ apl.selected }}</option>
                   <option value="Waiting for Review">Waiting for Review</option>
@@ -280,7 +283,7 @@
                 </select>
                 <button  style="border-radius: 10px;background-color: #6559cc;" >Submit</button>
               </form>
-            <a href="{% url 'resume_view' apl.id %}"><button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Resume</button></a>
+            <a href="{{ apl.rel_empl_post.resume.url }}"><button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Resume</button></a>
 
             <div style="color: rgba(255, 255, 255, 0.975);text-shadow: 0px 5px 5px black ;" class="text-left mt-3">
                 <h4 style="color: rgba(255, 255, 255, 0.758);" class="font-13 text-uppercase">About Me :</h4>

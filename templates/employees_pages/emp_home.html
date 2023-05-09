@@ -62,6 +62,7 @@
                         <select name="category" class="form-select border-0">
                             <option value="" selected>Category</option>
                             <option value="IT FIELD">IT FIELD</option>
+                            <option value="CUSTOMER SERVICE">CUSTOMER SERVICE</option>
                             <option value="HUMAN RESOURCE">HUMAN RESOURCE</option>
                             <option value="MECHANICAL JOBS">MECHANICAL JOBS</option>
                             <option value="WORK FROM HOME">WORK FROM HOME</option>
@@ -73,6 +74,20 @@
                     <div class="col-md-4">
                         <input name="location" type="text" class="form-control border-0" placeholder="location" />
                     </div>
+                    <div class="col-md-4">
+                        <select name="price" class="form-select border-0">
+                            <option value="" selected>Price Range</option>
+                            <option value="less Than 10000/-">less Than 10000/-</option>
+                            <option value="10000-25000">10000-25000</option>
+                            <option value="25000-40000">25000-40000</option>
+                            <option value="40000-55000">40000-55000</option>
+                            <option value="55000-70000">55000-70000</option>
+                            <option value="70000-85000">70000-85000</option>
+                            <option value="85000-100000">85000-100000</option>
+                            <option value="above 100000/-">above 100000/-</option>
+                        </select>
+                    </div>
+                    
                 </div>
             
             </div>
@@ -92,56 +107,56 @@
         <h1 style="color: white;" class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore By Category</h1>
         <div  class="row g-4">
             <div  class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <a  style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;" class="cat-item rounded p-4" href="{% url 'it_field' %}">
+                <a  style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;" class="cat-item rounded p-4" href="{% url 'employee_home' %}?category=IT FIELD">
                     <i style="color: white;" class="fa fa-3x fa-laptop  mb-4"></i>
                     <h6 class="mb-3">IT field</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;" class="cat-item rounded p-4" href="{% url 'customer_service' %}">
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;" class="cat-item rounded p-4" href="{% url 'employee_home' %}?category=CUSTOMER SERVICE">
                     <i style="color: white;" class="fa fa-3x fa-headset  mb-4"></i>
                     <h6 class="mb-3">Customer Service</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;" class="cat-item rounded p-4" href="{% url 'human_resource' %}">
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;" class="cat-item rounded p-4" href="{% url 'employee_home' %}?category=HUMAN RESOURCE">
                     <i style="color: white;" class="fa fa-3x fa-user-tie  mb-4"></i>
                     <h6 class="mb-3">Human Resource</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;background-size: 100% 100%;" class="cat-item rounded p-4" href="{% url 'work_from_home' %}">
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;background-size: 100% 100%;" class="cat-item rounded p-4" href="{% url 'employee_home' %}?category=WORK FROM HOME">
                     <i style="color: white;" class="fa fa-3x fa-home  mb-4"></i>
                     <h6 class="mb-3">Work From Home</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}'); background-attachment:fixed;" class="cat-item rounded p-4" href="{% url 'mechanical_job' %}">
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}'); background-attachment:fixed;" class="cat-item rounded p-4" href="{% url 'employee_home' %}?category=MECHANICAL JOBS">
                     <i style="color: white;"class="fa fa-3x fa-cogs  mb-4"></i>
                     <h6 class="mb-3">Mechanical Jobs</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}'); background-attachment: fixed;" class="cat-item rounded p-4" href="{% url 'automobile' %}">
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}'); background-attachment: fixed;" class="cat-item rounded p-4" href="{% url 'employee_home' %}?category=AUTOMOBILE">
                     <i style="color: white;" class="fa fa-3x fa-car  mb-4"></i>
                     <h6 class="mb-3">Automobile</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;background-size: 100% 100%;" class="cat-item rounded p-4" href="{% url 'education' %}">
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;background-size: 100% 100%;" class="cat-item rounded p-4" href="{% url 'employee_home' %}?category=TEACHING & EDUCATION">
                     <i style="color: white;" class="fa fa-3x fa-university  mb-4"></i>
                     <h6 class="mb-3">Teaching & Education</h6>
                     
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;background-size: 100% 100%;" class="cat-item rounded p-4" href="{% url 'design' %}">
+                <a style="box-shadow: 2px 2px 10px crimson;background-image: url('{% static 'img/bg-01.jpg' %}');background-attachment: fixed;background-size: 100% 100%;" class="cat-item rounded p-4" href="{% url 'employee_home' %}?category=DESIGN & CREATIVE">
                     <i style="color: white;" class="fa fa-3x fa-drafting-compass  mb-4"></i>
                     <h6 class="mb-3">Design & Creative</h6>
                     

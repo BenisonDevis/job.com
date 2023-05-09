@@ -22,14 +22,18 @@
                             {% csrf_token %}
                       
                             <div class="form-outline mb-4">
-                                <input type="number" name="password1"  class="form-control form-control-lg" />
+                                <input type="password" name="password1" id="password-field" class="form-control form-control-lg" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
                                 <label class="form-label" for="">Enter Password</label>
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input type="number" name="password2"  class="form-control form-control-lg" />
+                                <input type="password" name="password2" id="password-field" class="form-control form-control-lg" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
                                 <label class="form-label" for="">Confirm Password</label>
                             </div>
+                            <label for="show-password-toggle">
+                                <input type="checkbox" id="show-password-toggle" onclick="togglePasswordVisibility()">
+                                Show Password
+                            </label>
 
                             <button class="btn btn-dark btn-lg btn-block" type="submit">Submit</button>
               
@@ -45,7 +49,16 @@
     </div>
 </div>
 </div>
-
+<script>
+    function togglePasswordVisibility() {
+        var passwordField = document.getElementById("password-field");
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+        } else {
+          passwordField.type = "password";
+        }
+      }
+</script>
 
     
 {% endblock content %}

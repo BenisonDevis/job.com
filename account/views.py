@@ -1,6 +1,8 @@
 import random
 from django.shortcuts import render, redirect
 from .models import Account, Employee, Company
+from company.models import CompanyProfile
+from employee.models import ProfileEdit
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.core.mail import send_mail
@@ -9,11 +11,11 @@ from .models import UserOTP
 
 
 # Create your views here.
-def home(request):
-    return render(request, "base.html")
 
 
 def admin_create(request):
+    
+    
     if request.method == "POST":
         username = request.POST.get("username")
         fname = request.POST.get("firstname")
@@ -48,7 +50,6 @@ def employee_create(request):
         fname = request.POST.get("firstname")
         lname = request.POST.get("lastname")
         email = request.POST.get("email")
-        # role = request.POST.get("role")
         pasw1 = request.POST.get("password1")
         pasw2 = request.POST.get("password2")
 
@@ -82,7 +83,7 @@ def company_create(request):
         pasw1 = request.POST.get("password1")
         pasw2 = request.POST.get("password2")
 
-        user = Company.objects.filter(username=username)
+        user = Company.objects.filter(username=username).first()
         if not user:
             if pasw1 == pasw2:
                 Company.objects.create_user(
@@ -103,25 +104,54 @@ def company_create(request):
 
 
 def user_login(request):
+    
+    user =request.user
+    
+   
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
+        
 
         user = authenticate(username=username, password=password)
         
+            
         if user:
             login(request, user)
             messages.success(request, "Login")
+            
             if request.user.role == "USER":
-                return redirect("employee_home")
-            elif request.user.role == "COMPANY":               
-                return redirect("company_home")
+                employee = ProfileEdit.objects.filter(rel_profile = user)
+                if employee:
+                    return redirect("employee_home")
+                else:
+                    return redirect("employee_profile_edit")
+                
+            elif request.user.role == "COMPANY":
+                company = CompanyProfile.objects.filter(rel_comp = user)
+                if user.is_active == True:
+                    if company:                
+                        return redirect("company_home")
+                    else:
+                        return redirect("company_profile_edit")
+                else:
+                    
+                    messages.error(request, "Pleace")
+                
             elif request.user.role == "ADMIN":
                 return redirect("admin_homepage")
+            
+        elif request.user.is_active == "False":
+            messages.error(request, "Pleace Waiting for Permission")
         else:
-            messages.error(request, "invalid username or password")
 
-    return render(request, "accounts/login_user.html")
+            if user :
+                print('hellloooooo')
+                messages.error(request, "Pleace")
+            else:
+                messages.error(request, "invalid username or password")
+
+    return render(request, "accounts/index.html.html")
 
 
 def user_logout(request):
